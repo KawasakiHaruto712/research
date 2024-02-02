@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  research:
+    build:
+      context: .
+    container_name: research
+    tty: true
+    volumes:
+      - type: bind
+        source: .
+        target: /work
+      - type: volume
+        source: packages
+        target: /usr/local/lib/python3.12/site-packages
+
+volumes:
+  packages:
