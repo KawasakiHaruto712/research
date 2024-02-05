@@ -14,3 +14,4 @@ ENV TZ JST-9
 ENV TERM xterm
 
 RUN pip install --upgrade pip
+Run pip install requests tqdm
