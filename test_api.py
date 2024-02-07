@@ -22,7 +22,7 @@ for i in tqdm(range(len(file_cate))):
     # jsonファイル作成
     count = 0
     for filepath in filepath_list:
-        time.sleep(2)
+        time.sleep(1)
         # ファイル名からプロフジェクトナンバー抽出
         file_name = os.path.splitext(os.path.basename(filepath))[0]
         # コメントデータの取得
