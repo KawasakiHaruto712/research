@@ -12,6 +12,7 @@ services:
       - type: volume
         source: packages
         target: /usr/local/lib/python3.12/site-packages
+      - /mnt/data1/haruto-k/research:/work/research
 
 volumes:
   packages:
