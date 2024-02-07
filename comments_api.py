@@ -17,7 +17,7 @@ def get_comments_from_gerrit(url):
 
 file_cate = ['list_1', 'list_1 2', 'list_1 3', 'list_1 4', 'list_1 5', 'list_1 6', 'list_1 7']
 for i in tqdm(range(len(file_cate))):
-    filepath_read = '/mnt/data1/haruto-k/research/project/' + file_cate[i] + '/*.json'
+    filepath_read = '/work/research/project/' + file_cate[i] + '/*.json'
     filepath_list = glob(filepath_read)
     # jsonファイル作成
     for filepath in filepath_list:
@@ -28,6 +28,6 @@ for i in tqdm(range(len(file_cate))):
         url = 'https://review.openstack.org/changes/' + file_name + '/comments'
         comments = get_comments_from_gerrit(url)
         # コメントファイル作成
-        filepath_write = '/mnt/data1/haruto-k/research/project/comments/' + file_cate[i] + '/' + file_name + '_comments.json'
+        filepath_write = '/work/research/project/comments/' + file_cate[i] + '/' + file_name + '_comments.json'
         with open(filepath_write, 'w') as f:
             json.dump(comments, f, indent = 4)
