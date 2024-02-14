@@ -35,19 +35,14 @@ for i in tqdm(range(len(file_cate))):
             writer.writeheader()
 
             if review_list:
-                row_number = 0
                 for review in review_list:
                     # status_listの書き込み
                     status_row = {key: status_list[key] if key in status_list else '' for key in fieldnames}
 
                     # review_listの書き込み
                     review_row = {key: review[key] if key in review else '' for key in fieldnames}
-                    if row_number == 0:
-                        combined_row = {key: review_row[key] if review_row[key] else status_row[key] for key in fieldnames}
-                    else:
-                        combined_row = {**status_row, **review_row}
+                    combined_row = {key: review_row[key] if review_row[key] else status_row[key] for key in fieldnames}
                     writer.writerow(combined_row)
-                    row_number += 1
             else:
                 status_row = {key: status_list[key] if key in status_list else '' for key in fieldnames}
                 writer.writerow(status_row)
