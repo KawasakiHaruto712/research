@@ -22,21 +22,19 @@ def merge_comments_detail(outline_file, comments_file):
 # 詳細レビューコメントファイルのコメントIDを抽出
 def comments_id_extract(comments_message):
     comments_message_id = []
-    for key, comments_list in comments_message.items():
+    for comments_list in comments_message.values():
         for comments_report in comments_list:
             if 'change_message_id' in comments_report:
                 comments_message_id.append(comments_report['change_message_id'])
-    print(comments_message_id)
     return comments_message_id
 
 # 詳細レビューコメントファイルのコメント詳細を抽出
 def comments_detail_extract(comments_message):
     comments_message_detail = []
-    for key, comments_list in comments_message.items():
+    for comments_list in comments_message.values():
         for comments_report in comments_list:
             if 'message' in comments_report:
                 comments_message_detail.append(comments_report['message'])
-    print(comments_message_detail)
     return comments_message_detail
 
 outline_filepath_read = '/Users/haruto-k/research/project/list_1 6/12148.json'
