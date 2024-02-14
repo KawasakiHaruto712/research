@@ -206,7 +206,7 @@ project = 'Swift'
 file_cate = ['list_1', 'list_1 2', 'list_1 3', 'list_1 4', 'list_1 5', 'list_1 6', 'list_1 7']
 for i in tqdm(range(len(file_cate))):
     # ここは任意のパス
-    filepath_read = '/Users/haruto-k/research/project/' + file_cate[i] +'/*.json'
+    filepath_read = '/Users/haruto-k/research/project/comments_merge/' + file_cate[i] +'/*.json'
     filepath_list = glob(filepath_read)
     # print(revs_list) #ターミナルに表示したい場合はこの行のコメントアウトを外す
     # jsonファイル作成
