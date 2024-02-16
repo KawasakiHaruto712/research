@@ -46,12 +46,11 @@ for i in tqdm(range(len(file_cate))):
     # パスの取得
     outline_filepath_read = '/Users/haruto-k/research/project/' + file_cate[i] + '/*.json'
     outline_filepath_list = glob(outline_filepath_read)
-    comments_filepath_read = '/Users/haruto-k/research/project/comments/' + file_cate[i] + '/*_comments.json'
-    comments_filepath_list = glob(comments_filepath_read)
     # マージしたjsonファイルの作成
     for j in range(len(outline_filepath_list)):
-        merge_comments = merge_comments_detail(outline_filepath_list[j], comments_filepath_list[j])
         file_name = os.path.splitext(os.path.basename(outline_filepath_list[j]))[0]
+        comments_filepath_read = '/Users/haruto-k/research/project/comments/' + file_cate[i] + '/' + file_name + '_comments.json'
+        merge_comments = merge_comments_detail(outline_filepath_list[j], comments_filepath_read)
         merge_filepath_write = '/Users/haruto-k/research/project/comments_merge/' + file_cate[i] + '/' + file_name + '_comments_merge.json'
         with open(merge_filepath_write, 'w') as f:
             json.dump(merge_comments, f, indent = 4)
