@@ -1,3 +1,5 @@
-project
 select_list
 .DS_Store
+
+project/*/
+!project/adjust_comments.json/
