@@ -2,5 +2,5 @@
     {"adjustComment_id": 1, "comment_text": "lgtm"},
     {"adjustComment_id": 2, "comment_text": "looks good to me"},
     {"adjustComment_id": 3, "comment_text": "looks fine to me"},
-    {"adjustComment_id": 4, "comment_text": "looks ok to me"},
+    {"adjustComment_id": 4, "comment_text": "looks ok to me"}
 ]
