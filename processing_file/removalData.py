@@ -13,8 +13,10 @@ def removal_file(filepath):
         removal = 1
     elif not json_load['messages']: # コメントがなされているか
         removal = 1
+    '''
     elif sandwich_message(json_load['messages']): # リビジョン更新の前後にコメントがなされているか
         removal = 1
+    '''
 
     return removal, json_load
 
