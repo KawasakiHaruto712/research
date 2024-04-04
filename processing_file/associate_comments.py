@@ -7,18 +7,19 @@ import os
 def make_tasklist(filepath):
     with open(filepath) as f:
         review_file = json.load(f)
-    link_ratio, reviewlist = make_reviewlist(review_file)
-    statuslist = make_statuslist(review_file, link_ratio)
+    link_ratio, request_commentlist, reviewlist = make_reviewlist(review_file)
+    statuslist = make_statuslist(review_file, link_ratio, request_commentlist)
     return {'statuslist': statuslist, 'reviewlist': reviewlist}
 
 # ステータスリストの作成
-def make_statuslist(review_file, link_ratio):
+def make_statuslist(review_file, link_ratio, request_commentlist):
     number = str(review_file['_number'])
     subject = str(review_file['subject'])
     statuslist = {
         'number': number,
         'subject': subject,
-        'link_ratio': link_ratio
+        'link_ratio': link_ratio,
+        'number_request': len(request_commentlist)
     }
     return statuslist
 
@@ -56,7 +57,7 @@ def make_reviewlist(review_file):
                     'acheive_comment': '',
                     'notlink_comment': not_associate[i]
                 })
-    return link_ratio, reviewlist
+    return link_ratio, request_commentlist, reviewlist
 
 # コメントの紐付け
 def associate_comments(review_file):
@@ -85,7 +86,7 @@ def associate_comments(review_file):
         if append == 0:
             donelist.append('')
     # 紐づいていた修正確認コメントの割合計算
-    link_ratio = (donecount / len(request_commentlist)) * 100
+    link_ratio = donecount / len(request_commentlist)
     # 紐づけられなかった修正確認コメントのリスト作成
     for i in range(len(adjust_commentlist)):
         if associate_check[i] != 'Already associate':
