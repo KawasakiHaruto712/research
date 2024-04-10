@@ -9,8 +9,8 @@ def ratio_calculate(filepath_list):
     for filepath in tqdm(filepath_list):
         with open(filepath) as f:
             associate_file = json.load(f)
-        link_ratio = associate_file['statuslist']['link_ratio']
-        number_request = associate_file['statuslist']['number_request']
+        link_ratio = associate_file['status_list']['link_ratio']
+        number_request = associate_file['status_list']['number_request']
         number_link = link_ratio * number_request
         total_request += number_request
         total_link += number_link
