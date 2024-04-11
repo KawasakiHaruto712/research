@@ -1,5 +1,6 @@
 from glob import glob
 from tqdm import tqdm
+from collections import defaultdict
 import json
 import os
 
@@ -7,12 +8,13 @@ import os
 def create_task_list(filepath):
     with open(filepath) as f:
         review_file = json.load(f)
-    link_ratio, request_comments, review_list = create_review_list(review_file)
-    status_list = create_status_list(review_file, link_ratio, request_comments)
+    request_comments, review_list = create_review_list(review_file)
+    status_list = create_status_list(request_comments, review_file, review_list)
     return {'status_list': status_list, 'review_list': review_list}
 
 # ステータスリストの作成
-def create_status_list(review_file, link_ratio, request_comments):
+def create_status_list(request_comments, review_file, review_list):
+    link_ratio = calculate_linkRatio(request_comments, review_file, review_list)
     return {
         'number': str(review_file['_number']),
         'subject': str(review_file['subject']),
@@ -22,44 +24,40 @@ def create_status_list(review_file, link_ratio, request_comments):
 
 # レビューリストの作成
 def create_review_list(review_file):
-    link_ratio, request_comments, achieved_comments, unassociated_comments = associate_review_comments(review_file)
-    review_list = []
+    associate_comments, request_comments, achieved_comments = associate_review_comments(review_file)
+    unassociated_comments = unassociated_achived_comments(associate_comments, achieved_comments)
+    review_list = defaultdict(list)
     for i in range(max(len(request_comments), len(unassociated_comments))):
-        review_list.append({
+        review_list['link_comments'].append({
             'request_comment': request_comments[i]['message'] if i < len(request_comments) else '',
-            'achieve_comment': achieved_comments[i] if i < len(achieved_comments) else '',
-            'notlink_comment': unassociated_comments[i] if i < len(unassociated_comments) else '' 
+            'achieve_comment': achieved_comments[i]['message'] if i < len(achieved_comments) and isinstance(achieved_comments[i], dict) else ''
         })
-    return link_ratio, request_comments, review_list
+        review_list['notlink_comments'].append({
+            'notlink_comment': unassociated_comments[i]['message'] if i < len(unassociated_comments) else ''
+        })
+    return request_comments, review_list
 
 # コメントの紐付け
 def associate_review_comments(review_file):
-    adjust_commentlist, request_commentlist = classify_comments(review_file['messages'])
-    donelist, not_associate = [], []
-    donecount = 0
-    associate_check = [''] * len(adjust_commentlist)
-    for request_comment in request_commentlist:
-        append = False
-        for i in range(len(adjust_commentlist)):
+    associate_comments, request_comments = classify_comments(review_file['messages'])
+    achieved_comments = [''] * len(request_comments)
+    for index, request in enumerate(request_comments):
+        for associate in associate_comments:
             # 修正要求と修正確認コメントの紐付け
-            if adjust_commentlist[i]['_revision_number'] >= request_comment['_revision_number']: # 修正確認コメントのリビジョン数が要求より大きい
-                if ('author' in request_comment and 'name' in request_comment['author']) \
-                    and ('author' in adjust_commentlist[i] and 'name' in adjust_commentlist[i]['author']):
-                    if adjust_commentlist[i]['author']['name'] == request_comment['author']['name']: # 同一レビューアで紐付け
-                        donelist.append(adjust_commentlist[i]['message'])
-                        append = True
-                        donecount += 1
-                        associate_check[i] = 'Already associate'
-                        break
-        if append == False:
-            donelist.append('')
-    # 紐づいていた修正確認コメントの割合計算
-    link_ratio = donecount / len(request_commentlist)
-    # 紐づけられなかった修正確認コメントのリスト作成
-    for i in range(len(adjust_commentlist)):
-        if associate_check[i] != 'Already associate':
-            not_associate.append(adjust_commentlist[i]['message'])
-    return link_ratio, request_commentlist, donelist, not_associate
+            if associate['_revision_number'] >= request['_revision_number']: # 修正確認コメントのリビジョン数が要求より大きい
+                if ('author' in request and 'name' in request['author']) \
+                and ('author' in associate and 'name' in associate['author']) \
+                and (associate['author']['name'] == request['author']['name']): # 同一レビューアで紐付け
+                    achieved_comments[index] = associate
+    return associate_comments, request_comments, achieved_comments
+
+# 紐づかなかった修正確認コメントの確認
+def unassociated_achived_comments(associate_comments, achieved_comments):
+    unassociated_comments = []
+    for associate in associate_comments:
+        if not any(associate['id'] == achieved['id'] for achieved in achieved_comments if achieved != ''):
+            unassociated_comments.append(associate)
+    return unassociated_comments
 
 # 修正要求と修正確認コメントの分類
 def classify_comments(message_list):
@@ -74,6 +72,18 @@ def classify_comments(message_list):
             request_comments.append(message)
     return adjust_comments, request_comments
 
+# 紐づいている割合の算出
+def calculate_linkRatio(request_comments, review_file, review_list):
+    total_link = 0
+    link_ratio = 0
+    if any(review['achieve_comment'] != '' for review in review_list['link_comments']):
+        total_link += 1
+    if len(request_comments) != 0:
+        link_ratio = total_link / len(request_comments)
+    else:
+        print(str(review_file['_number']) + 'は修正要求コメントがないです')
+    return link_ratio
+
 def main():
     file_categories = ['list_1', 'list_2', 'list_3', 'list_4', 'list_5', 'list_6', 'list_7']
     for category in tqdm(file_categories):
@@ -82,7 +92,7 @@ def main():
         for filepath in filepath_list:
             task_list = create_task_list(filepath)
             file_name = os.path.splitext(os.path.basename(filepath))[0]
-            filepath_write = os.path.join('/Users/haruto-k/research/select_list/adjust_comments', category, file_name + '.json')
+            filepath_write = os.path.join('/Users/haruto-k/research/select_list/adjust_comments/json/', category, file_name + '.json')
             with open(filepath_write, 'w') as f:
                 json.dump(task_list, f, indent=4)
 
