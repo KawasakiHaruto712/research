@@ -4,26 +4,30 @@ import pandas as pd
 import os
 import json
 
+# JSONファイルを読み込む
 def combined_data(filepath):
-    # JSONファイルを読み込む
     with open(filepath, 'r') as file:
         data = json.load(file)
 
-    # 'status_list'データをDataFrameに変換
-    status_data = data['status_list']
-    status_df = pd.DataFrame([status_data])
+    # status_listをDataFrameに変換
+    status_details = pd.DataFrame([data['status_list']])
 
-    # 'review_list'データをDataFrameに変換
-    review_data = data['review_list']
-    review_df = pd.DataFrame(review_data)
+    # link_commentsとnotlink_commentsが含まれるか確認し、DataFrameを作成する
+    link_comments = pd.DataFrame(data['review_list'].get('link_comments', []))
+    notlink_comments = pd.DataFrame(data['review_list'].get('notlink_comments', []))
 
-    # status_dfに'review_list'データを追加するための準備：全ての行で同じstatusデータを使用
-    status_expanded_df = pd.concat([status_df]*len(review_df), ignore_index=True)
+    # DataFrameを結合する（存在しない場合は空の列を作成）
+    if link_comments.empty:
+        link_comments = pd.DataFrame(columns=['request_comment', 'achieve_comment'])
+    if notlink_comments.empty:
+        notlink_comments = pd.DataFrame(columns=['notlink_comment'])
 
-    # statusデータとreviewデータを結合
-    combined_df = pd.concat([status_expanded_df, review_df], axis=1)
+    # status_detailsをlink_commentsとnotlink_commentsの各行に繰り返して追加
+    combined_df = pd.concat([link_comments, notlink_comments], axis=1)
+    status_repeated = pd.concat([status_details] * len(combined_df), ignore_index=True)
+    final_df = pd.concat([status_repeated, combined_df.reset_index(drop=True)], axis=1)
 
-    return combined_df
+    return final_df
 
 def main():
     file_categories = ['list_1', 'list_2', 'list_3', 'list_4', 'list_5', 'list_6', 'list_7']
