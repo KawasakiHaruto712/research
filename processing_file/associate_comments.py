@@ -27,13 +27,14 @@ def create_review_list(review_file):
     associate_comments, request_comments, achieved_comments = associate_review_comments(review_file)
     unassociated_comments = unassociated_achived_comments(associate_comments, achieved_comments)
     review_list = defaultdict(list)
-    for i in range(max(len(request_comments), len(unassociated_comments))):
+    for index, request in enumerate(request_comments):
         review_list['link_comments'].append({
-            'request_comment': request_comments[i]['message'] if i < len(request_comments) else '',
-            'achieve_comment': achieved_comments[i]['message'] if i < len(achieved_comments) and isinstance(achieved_comments[i], dict) else ''
+            'request_comment': request['message'],
+            'achieve_comment': achieved_comments[index]['message'] if isinstance(achieved_comments[index], dict) else ''
         })
+    for unassociated in unassociated_comments:
         review_list['notlink_comments'].append({
-            'notlink_comment': unassociated_comments[i]['message'] if i < len(unassociated_comments) else ''
+            'notlink_comment': unassociated['message']
         })
     return request_comments, review_list
 
