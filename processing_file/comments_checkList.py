@@ -5,17 +5,14 @@ import random
 import json
 
 def create_checkList(filePath):
-
     checkList = []
     commentsNumber = 1
-
     # チェックリストの作成
     for index, file in tqdm(enumerate(filePath)):
-
         # ファイルの読み込み
         with open(file, 'r') as f:
             reviewFile = json.load(f)
-        
+        # 値の格納
         for messages in reviewFile['messages']:
             checkList.append({
                 'commentsNumber': commentsNumber,
@@ -32,14 +29,12 @@ def create_checkList(filePath):
     return checkList_df
 
 def main():
-
     # ファイルパスの読み取り，チェックリストの作成
     filePath_read = '/Users/haruto-k/research/project/formatFile/*/*.json'
     filePath_list = glob(filePath_read)
+    random.shuffle(filePath_list)
     filePath = filePath_list[:1000]
-    random.shuffle(filePath)
     checkList_df = create_checkList(filePath)
-
     # チェックリストの書き込み
     filePath_write = '/Users/haruto-k/research/select_list/checkList.csv'
     checkList_df.to_csv(filePath_write, index = False)
