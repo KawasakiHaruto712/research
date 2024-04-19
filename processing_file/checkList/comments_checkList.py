@@ -30,7 +30,7 @@ def create_checkList(filePath):
 
 def main():
     # ファイルパスの読み取り，チェックリストの作成
-    filePath_read = '/Users/haruto-k/research/project/formatFile/*/*.json'
+    filePath_read = '/Users/haruto-k/research/select_list/removal_bot/*/*.json'
     filePath_list = glob(filePath_read)
     random.shuffle(filePath_list)
     filePath = filePath_list[:1000]
