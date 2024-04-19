@@ -15,7 +15,8 @@ def removal_messages(filePath):
     while i >= 0:
         for bot in botNames:
             if reviewFile['messages'][i].get('author', {}).get('name', '').lower() == bot:
-                del reviewFile['messages'[i]]
+                del reviewFile['messages'][i]
+                i -= 1
                 break
         i -= 1
     if not reviewFile['messages']:
