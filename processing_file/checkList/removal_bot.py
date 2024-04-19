@@ -8,17 +8,14 @@ def removal_messages(filePath):
         reviewFile = json.load(rf)
     botNames_filePath = '/Users/haruto-k/research/project/botNames.json'
     with open(botNames_filePath) as bf:
-        botNames = json.load(bf)
+        botNames_data = json.load(bf)
+        botNames = [bot['name'].lower() for bot in botNames_data]  # 小文字に変換して比較
     removal = 0
 
     i = len(reviewFile['messages']) - 1
-    while i >= 0:
-        for bot in botNames:
-            if reviewFile['messages'][i].get('author', {}).get('name', '').lower() == bot:
-                del reviewFile['messages'][i]
-                i -= 1
-                break
-        i -= 1
+    for i in range(len(reviewFile['messages']) - 1, -1, -1):  # 最後から最初まで逆順でループ
+        if any(reviewFile['messages'][i].get('author', {}).get('name', '').lower() == bot for bot in botNames):
+            del reviewFile['messages'][i]  # 条件に一致したらその場で削除
     if not reviewFile['messages']:
         removal = 1
     return removal, reviewFile
