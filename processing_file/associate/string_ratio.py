@@ -17,7 +17,11 @@ def ratio_calculate(filepath_list):
     total_ratio = total_link / total_request
     return total_ratio
 
-filepath_read = '/Users/haruto-k/research/select_list/adjust_comments/json/*/*.json'
-filepath_list = glob(filepath_read)
-total_ratio = ratio_calculate(filepath_list)
-print(total_ratio)
+def main():
+    filepath_read = '/Users/haruto-k/research/select_list/adjust_comments/json/*/*.json'
+    filepath_list = glob(filepath_read)
+    total_ratio = ratio_calculate(filepath_list)
+    print(total_ratio)
+
+if __name__ == "__main__":
+    main()
