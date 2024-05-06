@@ -12,10 +12,14 @@ def name_extract(filepath_list):
         name_list.append([folder_name, file_name])
     return name_list
 
-filepath_read = '/Users/haruto-k/research/project/formatFile/*/*.json'
-filepath_list = glob(filepath_read)
-random.shuffle(filepath_list)
-name_list = name_extract(filepath_list)
-filepath_write = '/Users/haruto-k/research/select_list/visual_inspection.csv'
-df = pd.DataFrame(name_list, columns = ['folder', 'file'])
-df.to_csv(filepath_write, index = False)
+def main():
+    filepath_read = '/Users/haruto-k/research/project/formatFile/*/*.json'
+    filepath_list = glob(filepath_read)
+    random.shuffle(filepath_list)
+    name_list = name_extract(filepath_list)
+    filepath_write = '/Users/haruto-k/research/select_list/visual_inspection.csv'
+    df = pd.DataFrame(name_list, columns = ['folder', 'file'])
+    df.to_csv(filepath_write, index = False)
+    
+if __name__ == "__main__":
+    main()
