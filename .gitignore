@@ -5,4 +5,4 @@ project/*/
 !project/adjust_comments.json/
 
 processing_file/BERT/*/
-!processing_file/BERT/Bert_sample.py
+!processing_file/BERT/BertmodelCreate.py
