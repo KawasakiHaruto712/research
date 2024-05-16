@@ -4,6 +4,28 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from sklearn.metrics import precision_score, recall_score, f1_score
 from torch.utils.data import DataLoader, Dataset
 
+def create_checkList(df, all_preds, all_labels):
+    # 評価指標の計算
+    precision = precision_score(all_labels, all_preds)
+    recall = recall_score(all_labels, all_preds)
+    f1 = f1_score(all_labels, all_preds)
+
+    # 結果リストの作成
+    checkList = []
+    commentsList = df['text'].tolist()
+    for commentsNumber in range(len(commentsList)):
+        checkList.append({
+            'comments': commentsList[commentsNumber],
+            'correct': all_labels[commentsNumber],
+            'prediction': all_preds[commentsNumber],
+            'same': 1 if all_preds[commentsNumber] == all_labels[commentsNumber] else '',
+            'precision': precision if commentsNumber == 0 else '',
+            'recall': recall if commentsNumber == 0 else '',
+            'f1': f1 if commentsNumber == 0 else ''
+        })
+    checkList_df = pd.DataFrame(checkList)
+    return checkList_df
+
 # データセットクラスの定義
 class CommentDataset(Dataset):
     def __init__(self, texts, labels, tokenizer):
@@ -44,11 +66,7 @@ with torch.no_grad():
         all_preds.extend(preds.cpu().numpy())
         all_labels.extend(labels.cpu().numpy())
 
-# 評価指標の計算
-precision = precision_score(all_labels, all_preds)
-recall = recall_score(all_labels, all_preds)
-f1 = f1_score(all_labels, all_preds)
-
-print(f"Precision: {precision}")
-print(f"Recall: {recall}")
-print(f"F1 Score: {f1}")
+# 結果リストの書き込み
+checkList_df = create_checkList(df, all_preds, all_labels)
+filePath_write = '/Users/haruto-k/research/processing_file/BERT/checkList_results.csv'
+checkList_df.to_csv(filePath_write, index = False)
