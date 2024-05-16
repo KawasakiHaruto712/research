@@ -1,0 +1,781 @@
+comments,correct,prediction,same,precision,recall,f1
+"Patch Set 11:
+
+Build failed (check pipeline). To recheck leave a comment with 'intel-nfv-ci recheck'. For more info go to https://wiki.openstack.org/wiki/ThirdPartySystems/Intel_NFV_CI.
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-03-20/391597/11/check/tempest-dsvm-full-nfv-xenial/3053b09 : FAILURE in 1m 18s
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-03-20/391597/11/check/tempest-dsvm-intel-nfv-xenial/3f43c3d : FAILURE in 1m 18s
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-03-20/391597/11/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/5c7584a : FAILURE in 31s (non-voting)",0,0,1,0.7058823529411765,0.8571428571428571,0.7741935483870968
+"Patch Set 11:
+
+* pci-test http://52.27.155.124/pci/391597/11 : SUCCESS",0,0,1,,,
+"Patch Set 11: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/11/check/tempest-dsvm-full-xenial/6837f66/ : SUCCESS in 55m 00s",0,0,1,,,
+"Patch Set 11: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/11/check/dsvm-tempest-neutron-network/61d29b6 : SUCCESS in 1h 43m 39s",0,0,1,,,
+"Patch Set 11:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/11/ : SUCCESS in 1h 49m 10s",0,0,1,,,
+"Patch Set 11:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-20/391597/11/check/tempest-dsvm-full-nfv-xenial/f2ead7e : SUCCESS in 2h 01m 00s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-20/391597/11/check/tempest-dsvm-intel-nfv-xenial/81a16ab : FAILURE in 0s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-20/391597/11/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/ed79465 : FAILURE in 0s (non-voting)",0,0,1,,,
+"Patch Set 11:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/11/check-ibm-tempest-dsvm-full/2bd36ab : SUCCESS in 2h 44m 03s",0,0,1,,,
+Patch Set 11: Code-Review+1,0,0,1,,,
+Patch Set 11: Code-Review+1,0,0,1,,,
+Uploaded patch set 12.,0,0,1,,,
+"Patch Set 12:
+
+* pci-test http://52.27.155.124/pci/391597/12 : SUCCESS",0,0,1,,,
+"Patch Set 12: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/12/check/tempest-dsvm-full-xenial/f1d7c8a/ : SUCCESS in 48m 39s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/12/check/grenade-dsvm-xenial/ce9243a/ : SUCCESS in 40m 46s (non-voting)",0,0,1,,,
+"Patch Set 12:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/12/ : SUCCESS in 1h 17m 54s",0,0,1,,,
+"Patch Set 12:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-03-30/391597/12/check/tempest-dsvm-full-nfv-xenial/3be1483 : SUCCESS in 1h 21m 25s
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-03-30/391597/12/check/tempest-dsvm-intel-nfv-xenial/26ce29a : SUCCESS in 36m 34s
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-03-30/391597/12/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/1fa25a6 : SUCCESS in 1h 12m 25s (non-voting)",0,0,1,,,
+"Patch Set 12: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/12/check/dsvm-tempest-neutron-network/dc8bd7b : SUCCESS in 1h 52m 42s",0,0,1,,,
+"Patch Set 12:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/12/check/dsvm-tempest-xen/34c6345 : SUCCESS in 2h 04m 08s",0,0,1,,,
+"Patch Set 12:
+
+Build failed. Comment 'powervm: recheck' to recheck.
+ For 3rd party CI contact info: https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_PowerVM_CI
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/12/check/nova-out-of-tree-pvm/1342b9b : FAILURE in 2h 41m 53s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/12/check/nova-in-tree-pvm/f3a96f4 : SUCCESS in 36m 57s",0,0,1,,,
+"Patch Set 12:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/12/check-ibm-tempest-dsvm-full/3ce236e : FAILURE in 2h 32m 49s",0,0,1,,,
+"Patch Set 12:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-30/391597/12/check/tempest-dsvm-full-nfv-xenial/fd35929 : SUCCESS in 1h 52m 00s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-30/391597/12/check/tempest-dsvm-intel-nfv-xenial/08f19a8 : SUCCESS in 51m 25s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-03-30/391597/12/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/d86ae77 : SUCCESS in 1h 31m 27s (non-voting)",0,0,1,,,
+Patch Set 13: Patch Set 12 was rebased,0,0,1,,,
+"Patch Set 13:
+
+* pci-test http://52.27.155.124/pci/391597/13 : SUCCESS",0,0,1,,,
+"Patch Set 13: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/13/check/tempest-dsvm-full-xenial/5934dcc/ : SUCCESS in 52m 27s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/13/check/grenade-dsvm-xenial/7bb6c91/ : SUCCESS in 39m 44s (non-voting)",0,0,1,,,
+"Patch Set 13:
+
+Build succeeded.
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/13/check/nova-out-of-tree-pvm/82ae5c6 : SUCCESS in 1h 20m 55s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/13/check/nova-in-tree-pvm/db7f61b : SUCCESS in 36m 13s",0,0,1,,,
+"Patch Set 13:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-03/391597/13/check/tempest-dsvm-full-nfv-xenial/58cd4af : SUCCESS in 1h 36m 31s
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-03/391597/13/check/tempest-dsvm-intel-nfv-xenial/0cc7dd2 : SUCCESS in 38m 26s
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-03/391597/13/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/824bd75 : SUCCESS in 1h 09m 45s (non-voting)",0,0,1,,,
+"Patch Set 13: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/13/check/dsvm-tempest-neutron-network/9b2a78e : SUCCESS in 1h 41m 32s",0,0,1,,,
+"Patch Set 13:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-03/391597/13/check/tempest-dsvm-full-nfv-xenial/24abd49 : SUCCESS in 1h 53m 22s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-03/391597/13/check/tempest-dsvm-intel-nfv-xenial/99b25c5 : SUCCESS in 50m 24s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-03/391597/13/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/ca1d718 : SUCCESS in 1h 32m 28s (non-voting)",0,0,1,,,
+"Patch Set 13:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/13/check/dsvm-tempest-xen/0880c22 : SUCCESS in 2h 27m 39s",0,0,1,,,
+"Patch Set 13:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/13/check-ibm-tempest-dsvm-full/84b783b : FAILURE in 47m 55s",0,0,1,,,
+"Patch Set 13: Code-Review-1
+
+As noted in https://review.openstack.org/#/c/437070/ this should be done under a blueprint, whether it's that one or some other specless cleanup blueprint doesn't matter too much to me, but this isn't a bug.",1,1,1,,,
+"Patch Set 13:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/13/ : SUCCESS in 1h 28m 16s",0,0,1,,,
+Uploaded patch set 14.,0,0,1,,,
+"Patch Set 14: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/14/check/tempest-dsvm-full-xenial/3867be1/ : SUCCESS in 48m 29s",0,0,1,,,
+"Patch Set 14:
+
+* pci-test http://52.27.155.124/pci/391597/14 : SUCCESS",0,0,1,,,
+"Patch Set 14:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/14/ : SUCCESS in 1h 12m 34s",0,0,1,,,
+"Patch Set 14:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/14/check/tempest-dsvm-full-nfv-xenial/e2ccab7 : SUCCESS in 1h 50m 14s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/14/check/tempest-dsvm-intel-nfv-xenial/fbdd025 : SUCCESS in 50m 38s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/14/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/fca8bf0 : SUCCESS in 1h 36m 12s (non-voting)",0,0,1,,,
+Uploaded patch set 15.,0,0,1,,,
+"Patch Set 14:
+
+intel-nfv-ci recheck",0,0,1,,,
+"Patch Set 15: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/15/check/tempest-dsvm-full-xenial/f1d1839/ : SUCCESS in 49m 34s",0,0,1,,,
+"Patch Set 15:
+
+* pci-test http://52.27.155.124/pci/391597/15 : SUCCESS",0,0,1,,,
+"Patch Set 15:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/15/ : SUCCESS in 1h 21m 05s",0,0,1,,,
+"Patch Set 15:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/15/check/dsvm-tempest-xen/9cd1677 : SUCCESS in 2h 06m 00s",0,0,1,,,
+"Patch Set 15: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/15/check/dsvm-tempest-neutron-network/6c22a0a : SUCCESS in 2h 11m 10s",0,0,1,,,
+"Patch Set 14:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-13/391597/14/check/tempest-dsvm-full-nfv-xenial/0931bb2 : SUCCESS in 1h 25m 17s
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-13/391597/14/check/tempest-dsvm-intel-nfv-xenial/4a002a6 : SUCCESS in 36m 09s
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-13/391597/14/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/0a14016 : SUCCESS in 1h 19m 22s (non-voting)",0,0,1,,,
+"Patch Set 15:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/15/check/tempest-dsvm-full-nfv-xenial/1827a98 : SUCCESS in 1h 54m 39s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/15/check/tempest-dsvm-intel-nfv-xenial/70c6b46 : SUCCESS in 51m 15s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-13/391597/15/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/ad1e326 : SUCCESS in 1h 37m 10s (non-voting)",0,0,1,,,
+Patch Set 16: Patch Set 15 was rebased,0,0,1,,,
+"Patch Set 16:
+
+* pci-test http://52.27.155.124/pci/391597/16 : SUCCESS",0,0,1,,,
+"Patch Set 16: Code-Review-1
+
+(1 comment)
+You need at least os-brick 1.11.0 for these changes, but we require 1.8.0 at a minimum today:
+
+https://github.com/openstack/requirements/blob/master/global-requirements.txt#L150
+
+So you need to bump global-requirements for a new minimum (1.11.0 at this point).",1,1,1,,,
+"Patch Set 16: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/16/check/tempest-dsvm-full-xenial/860024b/ : SUCCESS in 48m 19s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/16/check/grenade-dsvm-xenial/44a8cdb/ : FAILURE in 5m 46s (non-voting)",0,0,1,,,
+"Patch Set 16:
+
+Build succeeded.
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/16/check/nova-out-of-tree-pvm/52ba7c7 : SUCCESS in 1h 01m 33s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/16/check/nova-in-tree-pvm/9e62512 : SUCCESS in 34m 20s",0,0,1,,,
+"Patch Set 16:
+
+For rechecking only on the Microsoft Hyper-V CI, add a review comment with check hyper-v
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/16/ : FAILURE in 1h 07m 39s",0,0,1,,,
+"Patch Set 16:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/16/check-ibm-tempest-dsvm-full/5f150b1 : FAILURE in 1h 14m 40s",0,0,1,,,
+"Patch Set 16:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/16/check/tempest-dsvm-full-nfv-xenial/5c2ee26 : SUCCESS in 1h 34m 30s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/16/check/tempest-dsvm-intel-nfv-xenial/dc37c4f : SUCCESS in 38m 26s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/16/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/575cd57 : SUCCESS in 1h 12m 35s (non-voting)",0,0,1,,,
+"Patch Set 16: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/16/check/dsvm-tempest-neutron-network/45e235f : SUCCESS in 1h 49m 49s",0,0,1,,,
+"Patch Set 16:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/16/check/tempest-dsvm-full-nfv-xenial/2fd9ee0 : SUCCESS in 1h 57m 33s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/16/check/tempest-dsvm-intel-nfv-xenial/9e898a8 : SUCCESS in 47m 18s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/16/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/677c965 : FAILURE in 1h 34m 05s (non-voting)",0,0,1,,,
+"Patch Set 16:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/16/check/dsvm-tempest-xen/4982116 : SUCCESS in 2h 04m 03s",0,0,1,,,
+Uploaded patch set 17: Commit message was updated.,0,0,1,,,
+"Patch Set 17: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/17/check/tempest-dsvm-full-xenial/030d348/ : SUCCESS in 53m 23s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/17/check/grenade-dsvm-xenial/b53ee67/ : SUCCESS in 39m 40s (non-voting)",0,0,1,,,
+"Patch Set 17:
+
+Build succeeded.
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/17/check/nova-out-of-tree-pvm/ba215c0 : SUCCESS in 1h 19m 08s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/17/check/nova-in-tree-pvm/40fbc93 : SUCCESS in 33m 30s",0,0,1,,,
+"Patch Set 17:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/17/check-ibm-tempest-dsvm-full/537d5b4 : SUCCESS in 1h 40m 41s",0,0,1,,,
+"Patch Set 17:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/17/ : SUCCESS in 1h 35m 46s",0,0,1,,,
+"Patch Set 17: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/17/check/dsvm-tempest-neutron-network/bf57055 : SUCCESS in 2h 14m 01s",0,0,1,,,
+"Patch Set 17:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/17/check/tempest-dsvm-full-nfv-xenial/ad73fd3 : SUCCESS in 1h 19m 26s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/17/check/tempest-dsvm-intel-nfv-xenial/cdb874d : SUCCESS in 33m 16s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-20/391597/17/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/3f1f6aa : SUCCESS in 1h 06m 32s (non-voting)",0,0,1,,,
+"Patch Set 17:
+
+* pci-test http://52.27.155.124/pci/391597/17 : SUCCESS",0,0,1,,,
+"Patch Set 17:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/17/check/dsvm-tempest-xen/0d7437b : SUCCESS in 1h 52m 26s",0,0,1,,,
+"Patch Set 17: Workflow-1
+
+(1 comment)
+Bump the required version of os-brick in nova's requirements.txt too.",1,1,1,,,
+"Patch Set 17:
+
+(1 comment)
+
+We also need to get gate-tempest-dsvm-neutron-scenario-multinode-ubuntu-xenial-nv running in the nova check queue (or experimental queue) and run this patch through that, since that's where the encrypted volume tests run now.
+nit: I believe this is redundant, the old encryptor base code in nova didn't pass in CONF:
+
+https://review.openstack.org/#/c/391597/17/nova/volume/encryptors/base.py@a35
+
+But this is OK.",1,0,,,,
+"Patch Set 17:
+
+We should hold this up until https://review.openstack.org/#/c/458676/ merges and then we can run this change against the tempest encrypted volume scenario tests.",0,0,1,,,
+"Patch Set 17:
+
+(1 comment)
+This is what you want:
+
+https://review.openstack.org/#/c/458834/",0,0,1,,,
+Patch Set 18: Published edit on patch set 17,0,0,1,,,
+"Patch Set 18: Workflow-1
+
+check experimental",0,0,1,,,
+Patch Set 19: Patch Set 18 was rebased,0,0,1,,,
+"Patch Set 19: Workflow-1
+
+check experimental",0,0,1,,,
+"Patch Set 19:
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19:
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19:
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19: Verified-1
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial tempest-dsvm-full-nfv-xenial : SKIPPED (non-voting)
+- tempest-dsvm-intel-nfv-xenial tempest-dsvm-intel-nfv-xenial : SKIPPED (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial : SKIPPED (non-voting)",0,0,1,,,
+"Patch Set 19:
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19:
+
+This change depends on a change that failed to merge.",0,0,1,,,
+"Patch Set 19:
+
+* pci-test http://52.27.155.124/pci/391597/19 : SUCCESS",0,0,1,,,
+Patch Set 20: Patch Set 19 was rebased,0,0,1,,,
+"Patch Set 20:
+
+check experimental",0,0,1,,,
+Patch Set 20: Workflow-1,0,0,1,,,
+"Patch Set 20: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/20/check/tempest-dsvm-full-xenial/8008a36/ : SUCCESS in 47m 16s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/20/check/grenade-dsvm-xenial/c55e164/ : SUCCESS in 39m 40s (non-voting)",0,0,1,,,
+"Patch Set 20:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/20/ : SUCCESS in 1h 13m 49s",0,0,1,,,
+"Patch Set 20:
+
+Testing completed on KVM for IBM z Systems. For rechecking only on the KVM for IBM z Systems CI, add a review comment with recheck-zkvm. Contact info: zkvm-ci@linux.vnet.ibm.com. For more information, see https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_zKVM_CI
+
+- check-ibm-tempest-dsvm-full http://sng01.objectstorage.softlayer.net/v1/AUTH_1940ea10-6e82-4501-b2f9-eb236510e575/ibmzkvmci/391597/20/check-ibm-tempest-dsvm-full/3de6ff9 : SUCCESS in 1h 18m 51s",0,0,1,,,
+"Patch Set 20:
+
+* pci-test http://52.27.155.124/pci/391597/20 : SUCCESS",0,0,1,,,
+"Patch Set 20:
+
+Build failed. Comment 'powervm: recheck' to recheck.
+ For 3rd party CI contact info: https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_PowerVM_CI
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/20/check/nova-out-of-tree-pvm/713d79e : SUCCESS in 1h 12m 22s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/20/check/nova-in-tree-pvm/534c6cc : FAILURE in 2m 33s",0,0,1,,,
+"Patch Set 20: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/20/check/dsvm-tempest-neutron-network/0ae00b5 : SUCCESS in 1h 46m 56s",0,0,1,,,
+"Patch Set 20:
+
+Build failed.  To recheck use 'xen: recheck'.  For 3rd party ci contact info: https://wiki.openstack.org/wiki/ThirdPartySystems
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/20/check/dsvm-tempest-xen/51bac57 : FAILURE in 1h 56m 42s",0,0,1,,,
+"Patch Set 20:
+
+check experimental",0,0,1,,,
+"Patch Set 17:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/17/check/tempest-dsvm-full-nfv-xenial/32ba5a1 : FAILURE in 34s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/17/check/tempest-dsvm-intel-nfv-xenial/72a2b56 : FAILURE in 47s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-20/391597/17/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/be714a1 : SUCCESS in 1h 31m 18s (non-voting)",0,0,1,,,
+"Patch Set 20:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-21/391597/20/check/tempest-dsvm-full-nfv-xenial/e8fe702 : SUCCESS in 1h 26m 41s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-21/391597/20/check/tempest-dsvm-intel-nfv-xenial/93ae7b8 : SUCCESS in 35m 26s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-21/391597/20/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/3325693 : SUCCESS in 1h 06m 07s (non-voting)",0,0,1,,,
+"Patch Set 20: Code-Review+2
+
+Encrypted volume scenario tests are still happy:
+
+http://logs.openstack.org/97/391597/20/experimental/gate-tempest-dsvm-neutron-scenario-multinode-ubuntu-xenial-nv/b96984b/console.html#_2017-04-21_21_06_05_740556",0,0,1,,,
+Patch Set 20: -Workflow,0,0,1,,,
+"Patch Set 20: Code-Review+2 Workflow+1
+
+(1 comment)
+I assume the expectation is to deprecate support for these legacy classpaths?",0,1,,,,
+"Patch Set 20:
+
+(1 comment)
+Ic155bd29d46059832cce970bf60375e7e472eca6 deprecated these in Ocata for removal in Pike but as Tempest will need to support Newton until Queens I'm going to delay this a cycle. Fun.",0,0,1,,,
+Patch Set 21: Patch Set 20 was rebased,0,0,1,,,
+Patch Set 21: Workflow+1,0,0,1,,,
+"Patch Set 21:
+
+* pci-test http://52.27.155.124/pci/391597/21 : SUCCESS",0,0,1,,,
+"Patch Set 21: Verified+1
+
+Build succeeded. Test completed on IBM PowerKVM platform. For rechecking only on the IBM PowerKVM CI, add a review comment with pkvm: recheck. For contact and more information, see https://wiki.openstack.org/wiki/PowerKVM
+
+- tempest-dsvm-full-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/21/check/tempest-dsvm-full-xenial/7c29890/ : SUCCESS in 52m 13s
+- grenade-dsvm-xenial http://dal05.objectstorage.softlayer.net/v1/AUTH_3d8e6ecb-f597-448c-8ec2-164e9f710dd6/pkvmci/nova/97/391597/21/check/grenade-dsvm-xenial/519d390/ : SUCCESS in 43m 56s (non-voting)",0,0,1,,,
+"Patch Set 21:
+
+Build failed. Comment 'powervm: recheck' to recheck.
+ For 3rd party CI contact info: https://wiki.openstack.org/wiki/ThirdPartySystems/IBM_PowerVM_CI
+
+- nova-out-of-tree-pvm http://184.172.12.213/97/391597/21/check/nova-out-of-tree-pvm/ed52437 : SUCCESS in 56m 27s
+- nova-in-tree-pvm http://184.172.12.213/97/391597/21/check/nova-in-tree-pvm/4b9192c : FAILURE in 36m 28s",0,0,1,,,
+"Patch Set 21:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-25/391597/21/check/tempest-dsvm-full-nfv-xenial/9dc6acb : SUCCESS in 1h 31m 34s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/2017-04-25/391597/21/check/tempest-dsvm-intel-nfv-xenial/9e24829 : SUCCESS in 35m 05s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/2017-04-25/391597/21/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/b7e658d : SUCCESS in 1h 10m 24s (non-voting)",0,0,1,,,
+"Patch Set 21:
+
+Build succeeded.
+
+- nova-dvsm-full-tempest http://64.119.130.115/nova/391597/21/ : SUCCESS in 1h 42m 09s",0,0,1,,,
+"Patch Set 21: Verified+1
+
+Build succeeded.
+
+- dsvm-tempest-neutron-network http://dd6b71949550285df7dc-dda4e480e005aaa13ec303551d2d8155.r49.cf1.rackcdn.com/97/391597/21/check/dsvm-tempest-neutron-network/b015a5b : SUCCESS in 1h 59m 04s",0,0,1,,,
+"Patch Set 21:
+
+Build succeeded (check pipeline).
+
+- tempest-dsvm-full-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-25/391597/21/check/tempest-dsvm-full-nfv-xenial/5030923 : SUCCESS in 1h 59m 39s (non-voting)
+- tempest-dsvm-intel-nfv-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-25/391597/21/check/tempest-dsvm-intel-nfv-xenial/76be091 : SUCCESS in 46m 21s (non-voting)
+- tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial http://intel-openstack-ci-logs.ovh/portland/2017-04-25/391597/21/check/tempest-dsvm-multinode-ovsdpdk-nfv-networking-xenial/e2c3c67 : SUCCESS in 1h 30m 13s (non-voting)",0,0,1,,,
+"Patch Set 21:
+
+Build succeeded.
+
+- dsvm-tempest-xen http://logs.openstack.xenproject.org/97/391597/21/check/dsvm-tempest-xen/b1d0d17 : SUCCESS in 2h 25m 04s",0,0,1,,,
+Change has been successfully merged into the git repository by Jenkins,0,0,1,,,
+Uploaded patch set 1.,0,0,1,,,
+"Patch Set 1:
+
+Build failed. Leave a comment with 'recheck-nec' to rerun a check. ('recheck' will be ignored.)
+
+This change was unable to be automatically merged with the current state of the repository. Please rebase your change and upload a new patchset.",0,0,1,,,
+"Patch Set 1:
+
+Thank you for your first contribution to OpenStack.
+
+    Your patch will now be tested automatically by OpenStack testing frameworks
+    and once the automatic tests pass, it will be reviewed by other friendly
+    developers. They will give you feedback and may require you to refine it.
+
+    People seldom get their patch approved on the first try, so don't be
+    concerned if requested to make corrections. Feel free to modify your patch
+    and resubmit a new change-set.
+
+    Patches usually take 3 to 7 days to be reviewed so be patient and be
+    available on IRC to ask and answer questions about your work. The more you
+    participate in the community the more rewarding it is for you. You may also
+    notice that the more you get to know people and get to be known, the faster
+    your patches will be reviewed and eventually approved. Get to know others
+    and become known by doing code reviews: anybody can do it, and it's a
+    great way to learn the code base.
+
+    Thanks again for supporting OpenStack, we look forward to working with you.
+
+    IRC: https://wiki.openstack.org/wiki/IRC
+    Workflow: https://wiki.openstack.org/wiki/Gerrit_Workflow",0,0,1,,,
+"Patch Set 1: Verified+1
+
+PASSED: https://db.tt/SQfvD4uT",0,0,1,,,
+"Patch Set 1:
+
+Brocade ML2: SUCCESS http://50.56.236.34/tempest2/92722/1d77dbde4147aed01de98511dd772b279a31c4ca/ml2",0,0,1,,,
+"Patch Set 1: Verified+1
+
+Build succeeded.
+
+- check-tempest-dsvm-ryuplugin http://180.37.183.32/ryuci/22/92722/1/check/check-tempest-dsvm-ryuplugin/7ebda0f : SUCCESS in 14m 00s
+- check-tempest-dsvm-ofagent http://180.37.183.32/ryuci/22/92722/1/check/check-tempest-dsvm-ofagent/e5e7dab : SUCCESS in 17m 30s",0,0,1,,,
+"Patch Set 1: Verified+1
+
+Tests succeeded.
+
+- BigSwitch-Plugin http://openstack-ci-gw.bigswitch.com/logs/refs-changes-22-92722-1/BSN_PLUGIN/ : SUCCESS
+- BigSwitch-ML2-Driver http://openstack-ci-gw.bigswitch.com/logs/refs-changes-22-92722-1/BSN_ML2/ : SUCCESS
+
+All Logs: http://openstack-ci-gw.bigswitch.com/logs/refs-changes-22-92722-1
+
+Contact: openstack-ci@bigswitch.com
+
+Leave a comment with 'recheck-bigswitch' to cause a recheck.",0,0,1,,,
+"Patch Set 1:
+
+Build succeeded.
+
+- neutron_zuul http://128.107.233.28:8080/job/neutron_zuul/274 : SUCCESS in 20m 28s",0,0,1,,,
+"Patch Set 1: Verified+1
+
+Arista third party testing PASSED [ https://arista.box.com/s/7n53fd00oggaz5kynp7z ]
+
+ For testing details or any questions please check https://wiki.openstack.org/wiki/Arista-third-party-testing",0,0,1,,,
+"Patch Set 1:
+
+Build succeeded.
+
+- http://64.119.130.115/92722/1/ : Looks good to me in 42m 43s",0,0,1,,,
+Patch Set 1: Code-Review+1,0,0,1,,,
+Patch Set 1: Code-Review+1,0,0,1,,,
+Patch Set 1: Code-Review+2,0,0,1,,,
+"Patch Set 1: Code-Review+2
+
+(1 comment)
+
+Suggestion inline...
+nit: it might be better to say ""usually"" rather than ""actually"", since putting it here (instead of the plugin's ini file) will also work (and have seen people do that).",1,1,1,,,
+Patch Set 1: Code-Review+1,0,0,1,,,
+"Patch Set 1: Code-Review-1
+
+(1 comment)
+I agree with Sumit, please change this to ""usually"".",1,1,1,,,
+"Patch Set 1: Code-Review-1
+
+(1 comment)
+Wouldn't it make more sense to start steering folks to put DB information here instead of in the plugin file?",1,1,1,,,
+"Patch Set 1: Code-Review-1
+
+(1 comment)
+I agree with Mark.",1,1,1,,,
+"Patch Set 1: Code-Review-1
+
+Changing to -1 per consensus with other reviewer's comments. Apologies for the churn on this minor change!",1,1,1,,,
+"Patch Set 1:
+
+(1 comment)
+it's straightforward to stick to neutron.conf rather than 'distributing' database configuration in different plugin files. my two cents.",1,1,1,,,
+"Patch Set 1:
+
+(1 comment)
++1",1,0,,,,
+"Patch Set 1: Workflow-1
+
+(1 comment)
+I agree. Perhaps I should state that while you can put DB info in the core plugin '.ini. file it is suggested to put DB info in neutron.conf since it is more intuitive?",0,1,,,,
+"Patch Set 1:
+
+(1 comment)
++1 to that type of wording Jorge.",0,1,,,,
+Uploaded patch set 2.,0,0,1,,,
+"Patch Set 2:
+
+Starting check jobs.
+http://10.250.201.20/zuul/status",0,0,1,,,
+"Patch Set 2:
+
+Build succeeded.
+
+- dsvm-tempest-huawei-ml2-controller http://10.250.201.20:8080/job/dsvm-tempest-huawei-ml2-controller/396/ : SUCCESS in 0s",0,0,1,,,
+Uploaded patch set 3.,0,0,1,,,
+"Patch Set 3:
+
+Starting check jobs.
+http://10.250.201.20/zuul/status",0,0,1,,,
+"Patch Set 3:
+
+Build succeeded.
+
+- dsvm-tempest-huawei-ml2-controller http://10.250.201.20:8080/job/dsvm-tempest-huawei-ml2-controller/398/ : SUCCESS in 0s",0,0,1,,,
+Patch Set 3: Code-Review+1,0,0,1,,,
+"Patch Set 2: Verified+1
+
+PASSED: https://db.tt/tcsL1irr",0,0,1,,,
+"Patch Set 2:
+
+Arista third party testing FAILED [ https://arista.box.com/s/rnakv48xq57rmekj2uct ]
+
+ For testing details or any questions please check https://wiki.openstack.org/wiki/Arista-third-party-testing",0,0,1,,,
+"Patch Set 2:
+
+One Convergence Third Party Tests Passed. LOGS LINK --->  https://www.dropbox.com/sh/42gg3ng5mnjx94y/AABBZBeNgN2zF8Q0E78i3NYUa  For any question mail us at: oc-neutron-test@oneconvergence.com",0,0,1,,,
+"Patch Set 2: Verified+1
+
+http://208.113.169.228/nuage-ci/22_92722_2 - SUCCESS",0,0,1,,,
+"Patch Set 3: Verified+1
+
+PASSED: https://db.tt/ETo8EF7h",0,0,1,,,
+"Patch Set 3:
+
+Arista third party testing FAILED [ https://arista.box.com/s/tzf5jpztqs3s3yivf6ri ]
+
+ For testing details or any questions please check https://wiki.openstack.org/wiki/Arista-third-party-testing",0,0,1,,,
+"Patch Set 2:
+
+FAILURE http://119.15.112.63/ci_midokura_logs_2014-06-06-214056",0,0,1,,,
+"Patch Set 2:
+
+Brocade ML2: SUCCESS http://50.56.236.34/tempest2/92722/49c13c64c7218a024847dfab7d3a748a977eedc5/ml2",0,0,1,,,
+"Patch Set 3:
+
+FAILURE http://119.15.112.63/ci_midokura_logs_2014-06-06-214539",0,0,1,,,
+"Patch Set 3: Verified+1
+
+Build succeeded.
+
+- check-tempest-dsvm-ryuplugin http://180.37.183.32/ryuci/22/92722/3/check/check-tempest-dsvm-ryuplugin/317699e : SUCCESS in 18m 07s
+- check-tempest-dsvm-ofagent http://180.37.183.32/ryuci/22/92722/3/check/check-tempest-dsvm-ofagent/2d5a7a6 : SUCCESS in 20m 42s",0,0,1,,,
+"Patch Set 3: Verified+1
+
+Build successful.
+
+- Neutron_Gate http://133.242.19.163:8000/neutron-ci-logs/Neutron_Gate/5940 : SUCCESS in 28m 13s",0,0,1,,,
+"Patch Set 3:
+
+One Convergence Third Party Tests Passed. LOGS LINK --->  https://www.dropbox.com/sh/sgut6d6jhvwsss9/AACHeUBrEq0aoDsly0OLZ0s_a  For any question mail us at: oc-neutron-test@oneconvergence.com",0,0,1,,,
+"Patch Set 3: Verified+1
+
+http://208.113.169.228/nuage-ci/22_92722_3 - SUCCESS",0,0,1,,,
+"Patch Set 3:
+
+Build failed. For rechecking only on the Hyper-V CI, add a review comment with recheck hyper-v
+
+- http://64.119.130.115/92722/3/ : Test run failed. in 37m 10s",0,0,1,,,
+"Patch Set 3:
+
+Freescale CI testing passed.
+
+
+- Freescale-ML2-Mechanism-Driver http://fslopenstackci.com/?dir=92722/3 : SUCCESS in 28m 02s
+
+CI Contact:  fslosci@freescale.com.
+
+For information on Freescale CI testing, see http://fslopenstackci.com/README.html
+
+Leave a comment with 'recheck freescale' to trigger a recheck.",0,0,1,,,
+Patch Set 3: Code-Review+1,0,0,1,,,
+"Patch Set 3:
+
+Build failed. For help on isolating this failure, please contact cisco-openstack-neutron-ci@cisco.com. To re-run, post a 'recheck cisco' comment.
+
+- neutron_zuul http://128.107.233.28:8080/job/neutron_zuul/973 : FAILURE in 51m 22s",0,0,1,,,
+"Patch Set 3: Code-Review-1
+
+(1 comment)
+This is very distribution and configuration specific. Someone could launch the process with a pointer specifically to a database.ini file as well and put the definitions in there.
+
+Since all of these are just merged by the configuration library, why is this note necessary?",1,1,1,,,
+Patch Set 3: Code-Review+2,0,0,1,,,
+Patch Set 3: Code-Review+1,0,0,1,,,
+Patch Set 3: Code-Review+2 Workflow+1,0,0,1,,,
+"Patch Set 1: Doesn't seem to work
+
+SmokeStack Results (patch set 1):
+	Unit Failed:Nova tests failed.  http://smokestack.openstack.org/?go=/jobs/32032
+	Libvirt (Fedora 17) Success: http://smokestack.openstack.org/?go=/jobs/32030
+	XenServer 5.6 (F17 domU) Success: http://smokestack.openstack.org/?go=/jobs/32031
+",0,0,1,,,
+Uploaded patch set 2.,0,0,1,,,
+"Patch Set 2: Works for me
+
+SmokeStack Results (patch set 2):
+	Unit Success: http://smokestack.openstack.org/?go=/jobs/32035
+	Libvirt (Fedora 17) Success: http://smokestack.openstack.org/?go=/jobs/32033
+	XenServer 5.6 (F17 domU) Success: http://smokestack.openstack.org/?go=/jobs/32034
+",0,0,1,,,
+"Patch Set 2:
+
+code review expired after 2 weeks of no activity, it can be restored using the `Restore Change` button under the Patch Set on the web interface",0,0,1,,,
+"Patch Set 2: Abandoned
+
+code review expired after 2 weeks of no activity, it can be restored using the `Restore Change` button under the Patch Set on the web interface",0,0,1,,,
+Patch Set 2: Restored,0,0,1,,,
+"Patch Set 2: Looks good to me (core reviewer)
+
+(1 inline comment)
+
+
+I believe this is intended to read something like:
+
+    Removing logical units should be done before attempting to delete the target,
+    while unexporting the iSCSI volume.  Otherwise, ietd will show a ""No such file
+    or directory"" error.",0,1,,,,
+"Patch Set 2: Looks good to me (core reviewer); Approved
+
+",0,0,1,,,
+Uploaded patch set 3.,0,0,1,,,
+"Patch Set 3: Looks good to me, but someone else must approve
+
+",0,0,1,,,
+"Patch Set 3: Looks good to me (core reviewer); Approved
+
+just rebased and fixed merge issue in tests",0,0,1,,,
+"Patch Set 3: Works for me
+
+SmokeStack Results (patch set 3):
+	Unit Success: http://smokestack.openstack.org/?go=/jobs/35667
+	Libvirt (Fedora 17) Success: http://smokestack.openstack.org/?go=/jobs/35665
+	XenServer 5.6 (F17 domU) Success: http://smokestack.openstack.org/?go=/jobs/35666
+",0,0,1,,,
+"Patch Set 3:
+
+recheck",0,0,1,,,
+"Patch Set 3:
+
+reverify",0,0,1,,,
+Uploaded patch set 1.,0,0,1,,,
+"""Patch Set 1: Code-Review-1
+
+(1 comment)
+
+what about the tripleo jobs?
+these are fetching master, or am I wrong?""",1,1,1,,,
+"""Patch Set 1:
+
+(1 comment)
+Indeed, https://bugs.launchpad.net/neutron/+bug/1923201
+
+Should we drop the branches variable in here to have the jobs run on the stable branch?""",0,0,1,,,
+"""Patch Set 1: Code-Review-1
+
+(1 comment)
+IMO yes, we should drop that """"branches"""" variable here and run those jobs with the stable branches too.""",1,1,1,,,
+"""Patch Set 1:
+
+(1 comment)
+Ack, sounds good to me""",0,1,,,,
+Uploaded patch set 2.,0,0,1,,,
+"""Patch Set 2:
+
+recheck neutron-ovs-tempest-multinode-full""",0,0,1,,,
+"""Patch Set 2: Code-Review+2
+
+Thanks""",0,0,1,,,
+Patch Set 2: Code-Review+2 Workflow+1,0,0,1,,,
