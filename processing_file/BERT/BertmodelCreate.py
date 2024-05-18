@@ -71,3 +71,6 @@ trainer = Trainer(
 
 # トレーニング開始
 trainer.train()
+
+# トレーニング完了後に最終的なモデルを保存
+trainer.save_model()
