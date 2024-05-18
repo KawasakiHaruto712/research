@@ -5,12 +5,25 @@ from transformers import BertTokenizer, BertForSequenceClassification, Trainer, 
 from torch.utils.data import Dataset, DataLoader
 
 # CSVファイルの読み込み
-commentsLabel_csv_path = '/Users/haruto-k/research/processing_file/BERT/checkList.csv'
-df = pd.read_csv(commentsLabel_csv_path, header=None)
-df.columns = ['text', 'label']
+commentsLabel_csv_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
+df = pd.read_csv(commentsLabel_csv_path, header=0)
+
+# 学習用にデータの変換
+df = df.rename(columns={'comment': 'text', '修正要求': 'label'})
+df['label'] = df['label'].replace('', '0').fillna(0).astype(int)
+
+# モデル作成用に前半9割のPRを用いる
+while True:
+    try:
+        labeled_PRNumber = int(input('PR that has been labeled: '))
+        break
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
+cutoff = labeled_PRNumber * 0.9
+train_df = df[df['PRNumber'] <= cutoff]
 
 # データセットの分割
-train_texts, val_texts, train_labels, val_labels = train_test_split(df['text'], df['label'], test_size=1/9)
+train_texts, val_texts, train_labels, val_labels = train_test_split(train_df['text'], train_df['label'], test_size=1/9)
 
 # トークナイザのロード
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
