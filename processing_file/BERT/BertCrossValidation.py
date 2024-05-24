@@ -52,7 +52,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     train_val_df = df.iloc[train_idx]
     test_df = df.iloc[test_idx]
 
-    # 訓練データと検証データに分割 (8:2 の比率で分割)
+    # 訓練データと検証データに分割 (8:1 の比率で分割)
     train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=712)
 
     # データセットの準備
