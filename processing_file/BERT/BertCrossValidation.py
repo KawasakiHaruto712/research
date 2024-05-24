@@ -1,6 +1,6 @@
 import torch
 import pandas as pd
-from sklearn.model_selection import KFold
+from sklearn.model_selection import KFold, train_test_split
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
 from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import precision_score, recall_score, f1_score
@@ -14,7 +14,7 @@ df = pd.read_csv(commentsLabel_csv_path, header=0)
 df = df.rename(columns={'comment': 'text', '修正要求': 'label'})
 df['label'] = df['label'].replace('', '0').fillna(0).astype(int)
 
-# ラベル付されているPRを用いる
+# ラベル付されているPR番号を入力
 while True:
     try:
         labeled_PRNumber = int(input('PR that has been labeled: '))
@@ -41,18 +41,23 @@ class CommentDataset(Dataset):
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 # 10分割交差検証の設定
-kf = KFold(n_splits=10, shuffle=True, random_state=42)
+kf = KFold(n_splits=10, shuffle=True, random_state=712)
 results = []
 all_preds = []
 all_indices = []
 
+# 10分割交差検証の実行
 for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     print(f'Fold {fold+1}')
-    train_df = df.iloc[train_idx]
+    train_val_df = df.iloc[train_idx]
     test_df = df.iloc[test_idx]
+
+    # 訓練データと検証データに分割 (8:2 の比率で分割)
+    train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=712)
 
     # データセットの準備
     train_dataset = CommentDataset(train_df['text'].tolist(), train_df['label'].tolist(), tokenizer)
+    val_dataset = CommentDataset(val_df['text'].tolist(), val_df['label'].tolist(), tokenizer)
     test_dataset = CommentDataset(test_df['text'].tolist(), test_df['label'].tolist(), tokenizer)
 
     # BERTモデルのロード
@@ -60,14 +65,15 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
 
     # トレーニングの設定
     training_args = TrainingArguments(
-        output_dir=f'./results/results_fold_{fold}',          
-        num_train_epochs=3,              
-        per_device_train_batch_size=8,   
-        per_device_eval_batch_size=16,   
-        warmup_steps=500,                
-        weight_decay=0.01,               
-        logging_dir=f'./logs_fold_{fold}',            
+        output_dir=f'./results/results_fold_{fold}',
+        num_train_epochs=3,
+        per_device_train_batch_size=8,
+        per_device_eval_batch_size=16,
+        warmup_steps=500,
+        weight_decay=0.01,
+        logging_dir=f'./logs_fold_{fold}',
         logging_steps=10,
+        evaluation_strategy="epoch"
     )
 
     # トレーナーの初期化
@@ -75,20 +81,19 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
         model=model,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=test_dataset
+        eval_dataset=val_dataset
     )
 
-    # トレーニング開始
+    # トレーニングと評価
     trainer.train()
 
-    # 予測
+    # テストデータに対する予測
     test_loader = DataLoader(test_dataset, batch_size=16, shuffle=False)
     fold_preds = []
     model.eval()  # 評価モードに設定
     with torch.no_grad():
         for batch in tqdm(test_loader):
             inputs = {k: v.to(model.device) for k, v in batch.items() if k != 'labels'}
-            labels = batch['labels'].to(model.device)
             outputs = model(**inputs)
             preds = torch.argmax(outputs.logits, dim=1)
             fold_preds.extend(preds.cpu().numpy())
@@ -110,8 +115,8 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
 
 # 結果の保存
 results_df = pd.DataFrame(results)
-index_sorted = sorted(zip(all_indices, all_preds))
-sorted_preds = [pred for _, pred in index_sorted]
+sorted_index_preds = sorted(zip(all_indices, all_preds))
+sorted_preds = [pred for _, pred in sorted_index_preds]
 
 # 元のデータフレームに予測結果を組み込む
 df.insert(loc = 0, column='precision', value=results_df['precision'].mean())
