@@ -36,10 +36,10 @@ def main():
 
     # 開発者名の追加
     owner = FindOwner(CheckList_df)
-    CheckList_df.insert(loc = 5, column='owner', value=owner)
+    CheckList_df.insert(loc = 6, column='owner', value=owner)
 
     # ownerを追加したチェックリストの書き出し
     Write_CheckList_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
-    CheckList_df.to_csv(Write_CheckList_path)
+    CheckList_df.to_csv(Write_CheckList_path, index=False, encoding='utf_8_sig')
 if __name__ == '__main__':
     main()
