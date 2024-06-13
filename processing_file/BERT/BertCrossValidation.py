@@ -7,7 +7,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 from tqdm import tqdm
 
 # CSVファイルの読み込み
-commentsLabel_csv_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
+commentsLabel_csv_path = '/work/research/select_list/checkList/alradyStart/checkList.csv'
 df = pd.read_csv(commentsLabel_csv_path, header=0)
 
 # データの前処理
@@ -125,4 +125,4 @@ df.insert(loc = 2, column='f1', value=results_df['f1'].mean())
 df.insert(loc = 11, column='予測', value=sorted_preds)
 df = df.rename(columns={'text': 'comment', 'label': '修正要求'})
 
-df.to_csv('/Users/haruto-k/research/select_list/chekList/alradyStart/checkList_result.csv', index=False, encoding='utf_8_sig')
+df.to_csv('/work/research/select_list/chekList/alradyStart/checkList_result.csv', index=False, encoding='utf_8_sig')
