@@ -26,9 +26,7 @@ def FindOwner(CheckList_df):
             jsonFile = json.load(f)
         
         # 開発者名をリストに追加
-        owner.append({
-            jsonFile['owner']['name'].lstrip('{\'').rstrip('\'}')
-        })
+        owner.append(jsonFile['owner']['name'])
     return owner
 
 def main():
@@ -41,6 +39,7 @@ def main():
     CheckList_df.insert(loc = 5, column='owner', value=owner)
 
     # ownerを追加したチェックリストの書き出し
-    CheckList_df.to_csv('/Users/haruto-k/Desktop/checkList.csv')
+    Write_CheckList_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
+    CheckList_df.to_csv(Write_CheckList_path)
 if __name__ == '__main__':
     main()
