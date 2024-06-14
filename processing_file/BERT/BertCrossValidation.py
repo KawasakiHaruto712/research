@@ -7,20 +7,16 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 from tqdm import tqdm
 
 # CSVファイルの読み込み
-commentsLabel_csv_path = '/work/research/select_list/checkList/alradyStart/checkList.csv'
-df = pd.read_csv(commentsLabel_csv_path, header=0)
+df = pd.read_csv('/work/research/select_list/checkList/alradyStart/checkList.csv', header=0)
 
 # データの前処理
 df = df.rename(columns={'comment': 'text', '修正要求': 'label'})
 df['label'] = df['label'].replace('', '0').fillna(0).astype(int)
 
-# ラベル付されているPR番号を入力
-while True:
-    try:
-        labeled_PRNumber = int(input('PR that has been labeled: '))
-        break
-    except ValueError:
-        print("Invalid input. Please enter a numeric value.")
+# ラベル付けされているPR番号を読み込み
+with open('/work/research/processing_file/BERT/labeled_PRNumber.txt') as f_txt:
+    textLine = f_txt.readlines()
+labeled_PRNumber = float(textLine[0])
 df = df[df['PRNumber'] <= labeled_PRNumber]
 
 # データセットクラスの定義
@@ -51,6 +47,10 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     print(f'Fold {fold+1}')
     train_val_df = df.iloc[train_idx]
     test_df = df.iloc[test_idx]
+
+    # ownerとauthorが一致する行は訓練，検証，予測に用いない
+    tarin_val_df = train_val_df[train_val_df['owner'] != train_val_df['author']]
+    test_df = test_df[test_df['owner'] != test_df['author']]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
     train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=712)
@@ -115,14 +115,21 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
 
 # 結果の保存
 results_df = pd.DataFrame(results)
-sorted_index_preds = sorted(zip(all_indices, all_preds))
-sorted_preds = [pred for _, pred in sorted_index_preds]
+sorted_index_preds = dict(sorted(zip(all_indices, all_preds)))
+sorted_preds = [''] * len(df)
+for dfRow in  range(len(df)):
+    if dfRow in sorted_index_preds:
+        sorted_preds[dfRow] = sorted_index_preds[dfRow]
 
 # 元のデータフレームに予測結果を組み込む
 df.insert(loc = 0, column='precision', value=results_df['precision'].mean())
 df.insert(loc = 1, column='recall', value=results_df['recall'].mean())
 df.insert(loc = 2, column='f1', value=results_df['f1'].mean())
-df.insert(loc = 11, column='予測', value=sorted_preds)
+df.insert(loc = 12, column='予測', value=sorted_preds)
 df = df.rename(columns={'text': 'comment', 'label': '修正要求'})
 
-df.to_csv('/work/research/select_list/chekList/alradyStart/checkList_result.csv', index=False, encoding='utf_8_sig')
+# ownerとauthorが一致する行は空白にする
+df.loc[df['owner'] == df['author'], '予測'] = pd.NA
+df.loc[df['owner'] == df['author'], '修正要求'] = pd.NA
+
+df.to_csv('/work/research/select_list/checkList/alradyStart/checkList_result.csv', index=False, encoding='utf_8_sig')
