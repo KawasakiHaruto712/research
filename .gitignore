@@ -1,8 +1,10 @@
 select_list
+!select_list/Ac
+
 .DS_Store
 
 project/*/
-!project/adjust_comments.json/
+!project/adjust_comments.json/AhieveCommentsFile.json
 
 processing_file/BERT/*/
 !processing_file/BERT/BertCrossValidation.py
