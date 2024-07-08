@@ -6,3 +6,5 @@ project/*/
 
 processing_file/BERT/*/
 !processing_file/BERT/BertCrossValidation.py
+
+venv
