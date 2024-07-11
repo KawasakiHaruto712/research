@@ -1,53 +1,296 @@
 [
-    {"name": "brocade openstack ci"},
-    {"name": "cloudbase cinder smb3 ci"},
-    {"name": "cloudbyte ci"},
-    {"name": "coho data storage ci"},
-    {"name": "dellemc powerflex ci"},
-    {"name": "dellemc powermax ci"},
-    {"name": "dellemc vnx ci"},
-    {"name": "dellemc xtremio ci"},
-    {"name": "dell emc ps ci"},
-    {"name": "dell storage ci"},
-    {"name": "eddie lin"},
-    {"name": "falconstor ci"},
-    {"name": "fujitsu eternus ci"},
-    {"name": "hpe storage ci"},
-    {"name": "huawei fusionstorage ci"},
-    {"name": "huawei volume ci"},
-    {"name": "ibm gpfs ci"},
-    {"name": "ibm storage ci"},
-    {"name": "ibm storwize ci"},
-    {"name": "ibm xiv ci"},
-    {"name": "infinidat ci"},
-    {"name": "itri disco ci"},
-    {"name": "jenkins"},
-    {"name": "kaminario k2 ci"},
-    {"name": "nec cinder ci"},
-    {"name": "netapp ci"},
-    {"name":  "netapp e-series ci"},
-    {"name": "nexenta ci"},
-    {"name": "nexenta edge ci"},
-    {"name": "microsoft cinder ci"},
-    {"name": "microsoft iscsi ci"},
-    {"name": "mellanox ci"},
-    {"name": "mellanox cinder ci"},
-    {"name": "prophetstor ci"},
-    {"name": "pure storage ci"},
-    {"name": "quobyte ci"},
-    {"name": "scality ci"},
-    {"name": "solidfire ci"},
-    {"name": "storpool openstack ci"},
-    {"name": "synology dsm ci"},
-    {"name": "tegile storage ci"},
-    {"name": "tintri ci"},
-    {"name": "veritas access ci"},
-    {"name": "veritas hyperscale ci"},
-    {"name": "violin memory v6000 ci"},
-    {"name": "virtuozzo ci"},
-    {"name": "virtuozzo storage ci"},
-    {"name": "vmware nsx ci"},
-    {"name": "xp cinder ci"},
-    {"name": "zadarastorage vpsa ci"},
-    {"name": "zuul"}
+    {
+        "name": "A10 Networks CI"
+    },
+    {
+        "name": "Arista CI"
+    },
+    {
+        "name": "Big Switch CI"
+    },
+    {
+        "name": "Blockbridge OpenStack CI"
+    },
+    {
+        "name": "Brocade Vyatta CI"
+    },
+    {
+        "name": "Cisco APIC CI"
+    },
+    {
+        "name": "Cisco CI"
+    },
+    {
+        "name": "Cisco Cinder CI"
+    },
+    {
+        "name": "Cisco CSR1kv CI"
+    },
+    {
+        "name": "Cisco FWaaS CI"
+    },
+    {
+        "name": "Cisco N1kv CI"
+    },
+    {
+        "name": "Cisco PNR CI"
+    },
+    {
+        "name": "Cisco Tail-f CI"
+    },
+    {
+        "name": "Cisco UCSM CI"
+    },
+    {
+        "name": "Cisco vpnaas CI"
+    },
+    {
+        "name": "Citrix XenServer CI"
+    },
+    {
+        "name": "CISCO ZM CI"
+    },
+    {
+        "name": "Cloudbase Nova Hyper-V CI"
+    },
+    {
+        "name": "DataCore CI"
+    },
+    {
+        "name": "Datera CI"
+    },
+    {
+        "name": "DB Datasets CI"
+    },
+    {
+        "name": "DDN Lustre CI"
+    },
+    {
+        "name": "Dell EMC CorpHD CI"
+    },
+    {
+        "name": "Dell StorageCenter CI"
+    },
+    {
+        "name": "DellEMC PowerStore CI"
+    },
+    {
+        "name": "DellEMC SC CI"
+    },
+    {
+        "name": "DellEMC Unity CI"
+    },
+    {
+        "name": "Elastic Recheck"
+    },
+    {
+        "name": "Embrane CI"
+    },
+    {
+        "name": "Fujitsu ETERNUS FC CI"
+    },
+    {
+        "name": "HDS HNAS CI"
+    },
+    {
+        "name": "Hedvig CI"
+    },
+    {
+        "name": "HGST Solutions CI"
+    },
+    {
+        "name": "Hitachi HBSD CI"
+    },
+    {
+        "name": "Hitachi HBSD2 CI"
+    },
+    {
+        "name": "Hitachi VSP CI"
+    },
+    {
+        "name": "HP Networking CI"
+    },
+    {
+        "name": "HP Storage CI"
+    },
+    {
+        "name": "HPMSA CI"
+    },
+    {
+        "name": "HPE XP STORAGE BLR CI"
+    },
+    {
+        "name": "huawei-cinder-ci"
+    },
+    {
+        "name": "IBM DB2 CI"
+    },
+    {
+        "name": "IBM FlashSystem CI"
+    },
+    {
+        "name": "IBM GPFS CINDER CI"
+    },
+    {
+        "name": "IBM NAS CI"
+    },
+    {
+        "name": "IBM PowerKVM CI"
+    },
+    {
+        "name": "IBM PowerVM CI"
+    },
+    {
+        "name": "IBM SDN-VE CI"
+    },
+    {
+        "name": "IBM Testing CI"
+    },
+    {
+        "name": "IBM zVM CI"
+    },
+    {
+        "name": "Infortrend CI"
+    },
+    {
+        "name": "INSPUR CI"
+    },
+    {
+        "name": "Intel_Zuul"
+    },
+    {
+        "name": "Intel Experimental CI"
+    },
+    {
+        "name": "Intel NFV CI"
+    },
+    {
+        "name": "Intel PCI CI"
+    },
+    {
+        "name": "Intel RSD CI"
+    },
+    {
+        "name": "Intel SR-IOV CI"
+    },
+    {
+        "name": "Kaminario K2FC CI"
+    },
+    {
+        "name": "LaunchpadSync"
+    },
+    {
+        "name": "Lenovo Storage CI"
+    },
+    {
+        "name": "LINBIT LINSTOR CI"
+    },
+    {
+        "name": "MacroSAN Volume CI"
+    },
+    {
+        "name": "Metaplugin CI"
+    },
+    {
+        "name": "Microsoft Hyper-V CI"
+    },
+    {
+        "name": "Microsoft Hyper-V Compute CI"
+    },
+    {
+        "name": "Microsoft Hyper-V Networking CI"
+    },
+    {
+        "name": "NetApp FC CI"
+    },
+    {
+        "name": "NetApp SolidFire CI"
+    },
+    {
+        "name": "Nimble Storage CI"
+    },
+    {
+        "name": "Nuage CI"
+    },
+    {
+        "name": "One Convergence CI"
+    },
+    {
+        "name": "Open-E JovianDSS CI"
+    },
+    {
+        "name": "OpenContrail CI"
+    },
+    {
+        "name": "OpenDaylight CI"
+    },
+    {
+        "name": "openstack lightbits"
+    },
+    {
+        "name": "OpenvStorage CI - unmaintained"
+    },
+    {
+        "name": "Oracle ZFSSA CI"
+    },
+    {
+        "name": "OSNEXUS Quantastor CI"
+    },
+    {
+        "name": "Pluribus Networks CI"
+    },
+    {
+        "name": "qnap-ci"
+    },
+    {
+        "name": "Reduxio HX550 CI"
+    },
+    {
+        "name": "Ryu CI"
+    },
+    {
+        "name": "SandStone Storage CI"
+    },
+    {
+        "name": "Seagate CI"
+    },
+    {
+        "name": "SmokeStack CI"
+    },
+    {
+        "name": "SwiftStack Cluster CI"
+    },
+    {
+        "name": "vArmour CI"
+    },
+    {
+        "name": "Vedams DotHillDriver CI"
+    },
+    {
+        "name": "Vedams-HPMSA FCISCSIDriver CI"
+    },
+    {
+        "name": "Vedams-LenovoStorage FCISCSI CI"
+    },
+    {
+        "name": "venkata krishnat"
+    },
+    {
+        "name": "vikas"
+    },
+    {
+        "name": "\"Welcome"
+    },
+    {
+        "name": "X-IO OpenStack CI"
+    },
+    {
+        "name": "XenProject CI"
+    },
+    {
+        "name": "z Systems KVM"
+    },
+    {
+        "name": "ZTE cinder2 CI"
+    }
 ]

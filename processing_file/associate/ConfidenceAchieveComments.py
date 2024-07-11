@@ -21,6 +21,11 @@ def ConfidenceCaluculation():
     with open(AcieveCommentsFile_path, 'r') as AchieveCommentsFile_json:
         AchieveCommentsFile = json.load(AchieveCommentsFile_json)
 
+    # Botの名前をまとめたファイルの読み込み
+    BotNamesFile_path = '/Users/haruto-k/research/project/BotNames.json'
+    with open(BotNamesFile_path, 'r') as BotNamesFile_json:
+        BotNamesFile = json.load(BotNamesFile_json)
+
     # 修正確認コメントと出現回数，信頼度を保存するためのリストを初期化
     ConfidenceAchieve_list = []
     NotAchieve_list = []
@@ -35,8 +40,9 @@ def ConfidenceCaluculation():
         # チェックリストを一行ずつ確認
         for _, CheckListRow in LabeledCheckList_df.iterrows():
 
-            # 開発者のコメントではないことの確認
-            if CheckListRow['owner'] != CheckListRow['author']:
+            # 開発者/Botのコメントではないことの確認
+            if (CheckListRow['author'] != CheckListRow['owner'] and
+                all(str(CheckListRow['author']).lower() != str(botname['name']).lower() for botname in BotNamesFile)):
 
                 # 修正確認コメントが含まれているか確認
                 if str(AchieveComment['AchieveComments']).lower() in CheckListRow['comment'].lower():
