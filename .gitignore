@@ -5,6 +5,7 @@ select_list
 
 project/*/
 !project/adjust_comments.json/AhieveCommentsFile.json
+!project/BotNames.json
 
 processing_file/BERT/*/
 !processing_file/BERT/BertCrossValidation.py
