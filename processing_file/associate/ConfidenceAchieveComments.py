@@ -23,6 +23,7 @@ def ConfidenceCaluculation():
 
     # 修正確認コメントと出現回数，信頼度を保存するためのリストを初期化
     ConfidenceAchieve_list = []
+    NotAchieve_list = []
 
     # 修正確認コメントの出現回数と信頼度の計算
     for AchieveComment in tqdm(AchieveCommentsFile):
@@ -49,6 +50,13 @@ def ConfidenceCaluculation():
                         # 修正確認コメント回数のカウント
                         SumTrueAchieve += 1
 
+                    # 修正確認コメントが含まれているコメントが修正確認コメントでなかった場合に目視調査できるように格納
+                    else:
+                        NotAchieve_list.append({
+                            '修正確認コメント': AchieveComment['AchieveComments'],
+                            **CheckListRow.to_dict()
+                        })
+
         # 修正確認コメントと出現回数，信頼度を保存
         ConfidenceAchieve_list.append({
             '修正確認コメント': AchieveComment['AchieveComments'],
@@ -59,19 +67,24 @@ def ConfidenceCaluculation():
     # 出現回数，信頼度の順に降順にソート
     SortedConfidenceAchieve_list = sorted(ConfidenceAchieve_list, key=lambda x:(x['出現回数'], x['信頼度']), reverse=True)
 
-    # ソートしたリストをデータフレーム型に変換
+    # リストをデータフレーム型に変換
     SortedConfidenceAchieve_df = pd.DataFrame(SortedConfidenceAchieve_list)
+    NotAchieve_df = pd.DataFrame(NotAchieve_list)
     
-    return SortedConfidenceAchieve_df
+    return SortedConfidenceAchieve_df, NotAchieve_df
 
 def main():
 
     # 信頼度などを計算する関数の呼び出し
-    ConfidenceAchieve_df = ConfidenceCaluculation()
+    ConfidenceAchieve_df, NotAchieve_df = ConfidenceCaluculation()
 
-    # 結果の出力
-    WriteResult_path = '/Users/haruto-k/research/select_list/adjust_comments/ConfidenceAchieveComments.csv'
-    ConfidenceAchieve_df.to_csv(WriteResult_path, index=False, encoding='utf_8_sig')
+    # 信頼度の結果の出力
+    WriteConfidenceResult_path = '/Users/haruto-k/research/select_list/adjust_comments/ConfidenceAchieveComments.csv'
+    ConfidenceAchieve_df.to_csv(WriteConfidenceResult_path, index=False, encoding='utf_8_sig')
+
+    # 修正確認のラベルがついていないコメントの目視用ファイルの出力
+    WriteNotAchieveResult_path = '/Users/haruto-k/research/select_list/adjust_comments/NotAchievelabel.csv'
+    NotAchieve_df.to_csv(WriteNotAchieveResult_path, index=False, encoding='utf_8_sig')
 
 if __name__ == "__main__":
     main()
