@@ -31,7 +31,7 @@ def FindOwner(CheckList_df):
 
 def main():
     #チェックリストの読み込み
-    Read_CheckList_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
+    Read_CheckList_path = '/Users/haruto-k/research/select_list/checkList/alradyStart/checkList.csv'
     CheckList_df = pd.read_csv(Read_CheckList_path, header=0)
 
     # 開発者名の追加
@@ -39,7 +39,7 @@ def main():
     CheckList_df.insert(loc = 6, column='owner', value=owner)
 
     # ownerを追加したチェックリストの書き出し
-    Write_CheckList_path = '/Users/haruto-k/research/select_list/chekList/alradyStart/checkList.csv'
+    Write_CheckList_path = '/Users/haruto-k/research/select_list/checkList/alradyStart/checkList.csv'
     CheckList_df.to_csv(Write_CheckList_path, index=False, encoding='utf_8_sig')
 if __name__ == '__main__':
     main()
