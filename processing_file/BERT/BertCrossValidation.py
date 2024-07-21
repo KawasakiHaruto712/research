@@ -62,6 +62,7 @@ def train_and_evaluate(train_dataset, val_dataset, test_dataset, fold):
         logging_dir=f'./logs_fold_{fold}',  # ログ出力先
         logging_steps=10,
         evaluation_strategy="epoch"
+        save_strategy="epoch"  # この行を追加
     )
     # トレーナーの設定
     trainer = Trainer(
