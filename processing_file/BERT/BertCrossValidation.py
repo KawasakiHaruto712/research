@@ -53,7 +53,7 @@ def train_and_evaluate(train_dataset, val_dataset, test_dataset, fold):
     # BERTモデルの読み込み
     model = BertForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=2)
     training_args = TrainingArguments(
-        output_dir=f'./results/results_fold_{fold}',  # 結果出力先
+        output_dir=f'./result/results_fold_{fold}',  # 結果出力先
         num_train_epochs=NUM_EPOCHS,
         per_device_train_batch_size=BATCH_SIZE_TRAIN,
         per_device_eval_batch_size=BATCH_SIZE_EVAL,
