@@ -75,7 +75,7 @@ def train_and_evaluate(train_dataset, val_dataset, test_dataset, fold):
     trainer.train()
     
     # テストデータローダーの作成
-    test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE_EVAL, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE_EVAL, shuffle=True)
     fold_preds = []
     model.eval()
     # テストデータでの予測
@@ -94,8 +94,7 @@ def main():
     df = load_and_preprocess_data(DATA_PATH, LABELS_PATH)
     tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
     
-    # PRNumberごとにデータを分割
-    pr_numbers = df['PRNumber'].unique()
+    # コメントごとにデータを分割
     kf = KFold(n_splits=N_SPLITS, shuffle=True, random_state=RANDOM_STATE)
     
     results = []
@@ -103,25 +102,19 @@ def main():
     all_indices = []
 
     # 各フォールドごとに処理
-    for fold, (train_val_idx, test_idx) in enumerate(kf.split(pr_numbers)):
+    for fold, (train_val_idx, test_idx) in enumerate(kf.split(df)):
         print(f'Fold {fold+1}')
         
         # トレイン・バリデーションとテストに分割
-        train_val_pr_numbers = pr_numbers[train_val_idx]
-        test_pr_numbers = pr_numbers[test_idx]
-
-        train_val_df = df[df['PRNumber'].isin(train_val_pr_numbers)]
-        test_df = df[df['PRNumber'].isin(test_pr_numbers)]
+        train_val_df = df.iloc[train_val_idx]
+        test_df = df.iloc[test_idx]
 
         # オーナーと著者が異なるデータのみを使用
         train_val_df = train_val_df[train_val_df['owner'] != train_val_df['author']]
         test_df = test_df[test_df['owner'] != test_df['author']]
         
         # トレインとバリデーションに分割
-        train_pr_numbers, val_pr_numbers = train_test_split(train_val_pr_numbers, test_size=1/9, random_state=RANDOM_STATE)
-        
-        train_df = train_val_df[train_val_df['PRNumber'].isin(train_pr_numbers)]
-        val_df = train_val_df[train_val_df['PRNumber'].isin(val_pr_numbers)]
+        train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=RANDOM_STATE)
         
         # データセットの作成
         train_dataset = CommentDataset(train_df['text'].tolist(), train_df['label'].tolist(), tokenizer)
