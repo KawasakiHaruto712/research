@@ -1,3 +1,5 @@
+processing_file/associate/Definition/__pycache__/*
+
 processing_file/BERT/*
 !processing_file/BERT/BertCrossValidation.py
 !processing_file/BERT/BERTRocalCrossValidation.py

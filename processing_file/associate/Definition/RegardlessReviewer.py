@@ -8,12 +8,22 @@ def Associate(RequestCommentData, AchieveCommentsData):
     for AchieveCommentData in AchieveCommentsData:
 
         # リビジョン更新後のコメントか確認
-        if RequestCommentData['Revision'] >= AchieveCommentData['Revision']:
-            break
+        if AchieveCommentData['Revision'] <= RequestCommentData['Revision']:
             
-        # リビジョン更新後のコメント
-        else:
-            AssociateCommentsID += ', ' + AchieveCommentData['CommentId']
+            # リビジョン更新前のコメントは対象にしない
+            continue
+
+        # 一つ目に紐づいたコメントか確認
+        if AssociateCommentsID == '':
+
+            # 紐づいたコメントのIDを保存
+            AssociateCommentsID += AchieveCommentData['CommentID']
+
+            # 次の修正確認コメントの確認に移る
+            continue
+
+        # 二つ目以降に紐づいたコメントのIDを保存
+        AssociateCommentsID += ', ' + AchieveCommentData['CommentID']
 
     # 紐づいたコメントのIDを返す
     return AssociateCommentsID
