@@ -8,12 +8,12 @@ from tqdm import tqdm
 from transformers import BertTokenizer, BertForSequenceClassification
 
 # 修正確認コメント例とレビューコメントのデータセットのファイルパスの定義
-AchieveCommentsFilePath = '/mnt/data1/haruto-k/research/project/AchieveComments.json'
-FormatPRFilePath = '/mnt/data1/haruto-k/research/select_list/removal_bot/*/*.json'
+AchieveCommentsFilePath = '/work/research/project/AchieveComments.json'
+FormatPRFilePath = '/work/research/project/formatFile/*/*.json'
 
 # 事前に設定した定数
 MODEL_NAME = 'bert-base-uncased'
-MODEL_DIR = '/mnt/data1/haruto-k/research/processing_file/BERT/RequestPredictModel/checkpoint-3174'  # モデルが保存されているディレクトリ
+MODEL_DIR = '/work/research/processing_file/BERT/RequestPredictModel/checkpoint-3174'  # モデルが保存されているディレクトリ
 MAX_LENGTH = 128
 
 # コメントデータを抽出する関数
@@ -166,7 +166,7 @@ def main():
         AssociateFileName = Path(ReviewCommentsPath).stem
 
         # 出力するファイルパスの作成
-        AssociateResultPath = '/mnt/data1/haruto-k/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
+        AssociateResultPath = '/work/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
 
         # 紐づけた結果の出力
         AssociateRequest_df = pd.DataFrame(AssociateRequest)
