@@ -45,7 +45,7 @@ all_indices = []
 
 # 10分割交差検証の実行
 for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
-    print(f'Fold {fold+1}')
+    print(f'Fold {fold}')
     train_val_df = df.iloc[train_idx]
     test_df = df.iloc[test_idx]
 
@@ -54,7 +54,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     test_df = test_df[test_df['owner'] != test_df['author']]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
-    train_df, val_df = train_test_split(train_val_df, test_size=1/5, random_state=712)
+    train_df, val_df = train_test_split(train_val_df, test_size=3/10, random_state=712)
 
     # データセットの準備
     train_dataset = CommentDataset(train_df['text'].tolist(), train_df['label'].tolist(), tokenizer)
@@ -66,7 +66,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
 
     # トレーニングの設定
     training_args = TrainingArguments(
-        output_dir=f'./results/results_fold_{fold}',
+        output_dir=f'./FiveCrossValidationResults/results_fold_{fold}',
         num_train_epochs=3,
         per_device_train_batch_size=8,
         per_device_eval_batch_size=16,
@@ -74,7 +74,8 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
         weight_decay=0.01,
         logging_dir=f'./logs_fold_{fold}',
         logging_steps=10,
-        evaluation_strategy="epoch"
+        evaluation_strategy="epoch",
+        save_strategy="epoch"
     )
 
     # トレーナーの初期化
