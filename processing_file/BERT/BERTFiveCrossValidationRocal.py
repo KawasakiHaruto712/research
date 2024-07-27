@@ -38,7 +38,7 @@ class CommentDataset(Dataset):
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 # 10分割交差検証の設定
-kf = KFold(n_splits=10, shuffle=True, random_state=712)
+kf = KFold(n_splits=5, shuffle=True, random_state=712)
 results = []
 all_preds = []
 all_indices = []
