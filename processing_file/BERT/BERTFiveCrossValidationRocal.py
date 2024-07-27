@@ -38,7 +38,7 @@ class CommentDataset(Dataset):
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 # 10分割交差検証の設定
-kf = KFold(n_splits=10, shuffle=True, random_state=712)
+kf = KFold(n_splits=5, shuffle=True, random_state=712)
 results = []
 all_preds = []
 all_indices = []
@@ -54,7 +54,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     test_df = test_df[test_df['owner'] != test_df['author']]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
-    train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=712)
+    train_df, val_df = train_test_split(train_val_df, test_size=1/5, random_state=712)
 
     # データセットの準備
     train_dataset = CommentDataset(train_df['text'].tolist(), train_df['label'].tolist(), tokenizer)
