@@ -54,7 +54,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     test_df = test_df[test_df['owner'] != test_df['author']]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
-    train_df, val_df = train_test_split(train_val_df, test_size=1/9, random_state=712)
+    train_df, val_df = train_test_split(train_val_df, test_size=1/5, random_state=712)
 
     # データセットの準備
     train_dataset = CommentDataset(train_df['text'].tolist(), train_df['label'].tolist(), tokenizer)
