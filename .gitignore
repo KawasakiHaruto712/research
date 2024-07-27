@@ -4,6 +4,7 @@ processing_file/BERT/*
 !processing_file/BERT/BertCrossValidation.py
 !processing_file/BERT/BERTRocalCrossValidation.py
 !processing_file/BERT/PredRequestBERTModelCreate.py
+!processing_file/BERT/BERTFiveCrossVAlidationRocal.py
 
 project/*
 !project/AchieveComments.json
