@@ -50,7 +50,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     test_df = df.iloc[test_idx]
 
     # ownerとauthorが一致する行は訓練，検証，予測に用いない
-    tarin_val_df = train_val_df[train_val_df['owner'] != train_val_df['author']]
+    train_val_df = train_val_df[train_val_df['owner'] != train_val_df['author']]
     test_df = test_df[test_df['owner'] != test_df['author']]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
