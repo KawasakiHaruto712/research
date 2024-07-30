@@ -1,10 +1,7 @@
 processing_file/associate/Definition/__pycache__/*
 
 processing_file/BERT/*
-!processing_file/BERT/BertCrossValidation.py
-!processing_file/BERT/BERTRocalCrossValidation.py
-!processing_file/BERT/PredRequestBERTModelCreate.py
-!processing_file/BERT/BERTFiveCrossVAlidationRocal.py
+!processing_file/BERT/BERTFiveCrossValidationRocal.py
 
 project/*
 !project/AchieveComments.json
