@@ -13,7 +13,7 @@ FormatPRFilePath = '/Users/haruto-k/research/select_list/removal_bot/*/*.json'
 
 # 事前に設定した定数
 MODEL_NAME = 'bert-base-uncased'
-MODEL_DIR = '/Users/haruto-k/research/processing_file/BERT/RequestPredictModel/checkpoint-3174'  # モデルが保存されているディレクトリ
+MODEL_DIR = '/Users/haruto-k/research/processing_file/BERT/BERTModelCreate/Result/SaveModel'  # モデルが保存されているディレクトリ
 MAX_LENGTH = 128
 
 # コメントデータを抽出する関数
