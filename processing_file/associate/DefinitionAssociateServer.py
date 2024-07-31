@@ -8,12 +8,12 @@ from tqdm import tqdm
 from transformers import BertTokenizer, BertForSequenceClassification
 
 # 修正確認コメント例とレビューコメントのデータセットのファイルパスの定義
-AchieveCommentsFilePath = '/work/research/project/AchieveComments.json'
-FormatPRFilePath = '/work/research/project/formatFile/*/*.json'
+AchieveCommentsFilePath = '/mnt/data1/haruto-k/research/project/AchieveComments.json'
+FormatPRFilePath = '/mnt/data1/haruto-k/research/select_list/removal_bot/*/*.json'
 
 # 事前に設定した定数
 MODEL_NAME = 'bert-base-uncased'
-MODEL_DIR = '/work/research/processing_file/BERT/BERTModelCreate/Result/SaveModel'  # モデルが保存されているディレクトリ
+MODEL_DIR = '/mnt/data1/haruto-k/research/processing_file/BERT/BERTModelCreate/Result/SaveModel'  # モデルが保存されているディレクトリ
 MAX_LENGTH = 128
 
 # コメントデータを抽出する関数
@@ -33,7 +33,7 @@ def CommentDataExtract(CommentData):
     return ExtractCommentData
 
 # 修正確認のコメントを見つける関数
-def FindAchieve(FormatPRFile):
+def FindAchieve(ReviewCommentsFile):
 
     # 修正確認コメントの定義ファイルの読み込み
     with open(AchieveCommentsFilePath, 'r') as AchieveFile:
@@ -46,10 +46,10 @@ def FindAchieve(FormatPRFile):
     AchieveCommentsData = []
 
     # レビューコメント毎に紐づくか確認
-    for CommentData in FormatPRFile['messages']:
+    for CommentData in ReviewCommentsFile['messages']:
 
         # PR実装者によるコメントでないか確認
-        if CommentData.get('author', {}).get('name', '') == FormatPRFile['owner']['name']:
+        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile.get('owner', {}).get('name', ''):
 
             # PR実装者のコメントは対象にしない
             continue
@@ -67,22 +67,22 @@ def FindAchieve(FormatPRFile):
     return AchieveCommentsData
 
 # 修正要求を見つける関数
-def FindRequest(FormatPRFile):
+def FindRequest(ReviewCommentsFile, Model, Tokenizer):
 
     # 修正要求の予測結果をコメントを保存するリストの初期化
     RequestsCommentsData = []
 
     # レビューコメント毎に修正要求か否かを予測
-    for CommentData in FormatPRFile['messages']:
+    for CommentData in ReviewCommentsFile['messages']:
         
         # PR実装者によるコメントでないか確認
-        if CommentData.get('author', {}).get('name', '') == FormatPRFile['owner']['name']:
+        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile.get('owner', {}).get('name', ''):
 
             # PR実装者のコメントは対象にしない
             continue
         
         # 修正要求を予測する関数の呼び出し
-        RequestPredictClass = PredictRequest(CommentData['message'])
+        RequestPredictClass = PredictRequest(CommentData['message'], Model, Tokenizer)
 
         # 修正要求のコメントか確認
         if RequestPredictClass == 1:
@@ -110,11 +110,7 @@ def DefinitionBasedAssociate(RequestsCommentData, AchieveCommentData):
     return AssociateRequest
 
 # 修正要求の予測をする関数
-def PredictRequest(Comment):
-
-    # モデルとトークナイザーのロード
-    Model = BertForSequenceClassification.from_pretrained(MODEL_DIR)
-    Tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
+def PredictRequest(Comment, Model, Tokenizer):
 
     # コメントをトークナイズ
     Encoding = Tokenizer(Comment, truncation=True, padding='max_length', max_length=MAX_LENGTH, return_tensors='pt')
@@ -131,17 +127,17 @@ def PredictRequest(Comment):
     return RequestPredictClass
 
 # 修正要求と修正確認を紐づける関数
-def RequestAndAchieveAssociate(FormatPRFilePath):
+def RequestAndAchieveAssociate(ReviewCommentsPath, Model, Tokenizer):
 
     # FormatFileの読み込み
-    with open(FormatPRFilePath, 'r') as FormatFile:
-        FormatPRFile = json.load(FormatFile)
+    with open(ReviewCommentsPath, 'r') as Review_F:
+        ReviewCommentsFile = json.load(Review_F)
 
     # 修正要求の予測を行う関数の呼び出し
-    RequestsCommentsData = FindRequest(FormatPRFile)
+    RequestsCommentsData = FindRequest(ReviewCommentsFile, Model, Tokenizer)
 
     # 修正確認のコメントを見つける関数の呼び出し
-    AchieveCommentsData = FindAchieve(FormatPRFile)
+    AchieveCommentsData = FindAchieve(ReviewCommentsFile)
 
     # 修正要求と修正確認コメントを紐づける関数の呼び出し
     AssociateRequest = DefinitionBasedAssociate(RequestsCommentsData, AchieveCommentsData)
@@ -152,21 +148,26 @@ def RequestAndAchieveAssociate(FormatPRFilePath):
 # メイン処理
 def main():
 
-    # 研究で対象としている全PRを抽出する
-    FormatPRFilePathList = glob(FormatPRFilePath)
+    # モデルとトークナイザーのロード
+    Model = BertForSequenceClassification.from_pretrained(MODEL_DIR)
+    Tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
 
-    # 一つずつPRを処理する
-    for ReviewCommentsPath in tqdm(FormatPRFilePathList):
+    # モデルをGPUに移動
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    Model.to(device)
+
+    # 対象とするPRを一つずつ処理する
+    for ReviewCommentsPath in tqdm(glob(FormatPRFilePath)):
 
         # 修正要求を紐づけるための関数の呼び出し
-        AssociateRequest = RequestAndAchieveAssociate(ReviewCommentsPath)
+        AssociateRequest = RequestAndAchieveAssociate(ReviewCommentsPath, Model, Tokenizer)
 
         # 出力するフォルダとファイル名の読み込み
         AssociateFolderName = Path(ReviewCommentsPath).parent.name
         AssociateFileName = Path(ReviewCommentsPath).stem
 
         # 出力するファイルパスの作成
-        AssociateResultPath = '/work/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
+        AssociateResultPath = '/mnt/data1/haruto-k/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
 
         # 紐づけた結果の出力
         AssociateRequest_df = pd.DataFrame(AssociateRequest)

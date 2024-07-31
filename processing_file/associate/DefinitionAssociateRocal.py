@@ -152,6 +152,10 @@ def main():
     Model = BertForSequenceClassification.from_pretrained(MODEL_DIR)
     Tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
 
+    # モデルをGPUに移動
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    Model.to(device)
+
     # 対象とするPRを一つずつ処理する
     for ReviewCommentsPath in tqdm(glob(FormatPRFilePath)):
 
