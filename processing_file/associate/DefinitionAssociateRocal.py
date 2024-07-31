@@ -49,7 +49,7 @@ def FindAchieve(ReviewCommentsFile):
     for CommentData in ReviewCommentsFile['messages']:
 
         # PR実装者によるコメントでないか確認
-        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile['owner']['name']:
+        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile.get('owner', {}).get('name', ''):
 
             # PR実装者のコメントは対象にしない
             continue
@@ -76,7 +76,7 @@ def FindRequest(ReviewCommentsFile, Model, Tokenizer):
     for CommentData in ReviewCommentsFile['messages']:
         
         # PR実装者によるコメントでないか確認
-        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile['owner']['name']:
+        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile.get('owner', {}).get('name', ''):
 
             # PR実装者のコメントは対象にしない
             continue
