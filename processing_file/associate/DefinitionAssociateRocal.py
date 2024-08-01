@@ -153,7 +153,7 @@ def RequestAndAchieveAssociate(ReviewCommentsPath):
     AssociateFileName = Path(ReviewCommentsPath).stem
 
     # 出力するファイルパスの作成
-    AssociateResultPath = '/Users/haruto-k/research/select_list/RequestAssociateAF/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
+    AssociateResultPath = '/Users/haruto-k/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
 
     # 紐づけた結果の出力
     AssociateRequest_df = pd.DataFrame(AssociateRequest)
