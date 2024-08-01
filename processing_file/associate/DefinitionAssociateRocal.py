@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import torch
+from concurrent.futures import ProcessPoolExecutor
 from Definition import RegardlessReviewer, SameReviewer
 from glob import glob
 from pathlib import Path
@@ -15,6 +16,10 @@ FormatPRFilePath = '/Users/haruto-k/research/select_list/removal_bot/*/*.json'
 MODEL_NAME = 'bert-base-uncased'
 MODEL_DIR = '/Users/haruto-k/research/processing_file/BERT/BERTModelCreate/Result/SaveModel'  # モデルが保存されているディレクトリ
 MAX_LENGTH = 128
+
+# モデルとトークナイザーのロード
+Model = BertForSequenceClassification.from_pretrained(MODEL_DIR)
+Tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
 
 # コメントデータを抽出する関数
 def CommentDataExtract(CommentData):
@@ -67,29 +72,30 @@ def FindAchieve(ReviewCommentsFile):
     return AchieveCommentsData
 
 # 修正要求を見つける関数
-def FindRequest(ReviewCommentsFile, Model, Tokenizer):
+def FindRequest(ReviewCommentsFile):
 
-    # 修正要求の予測結果をコメントを保存するリストの初期化
+    # コメントデータの抽出
+    CommentsData = ReviewCommentsFile['messages']
+        
+    # 修正要求を予測する関数の呼び出し
+    PredictCommentData = [ReviewComment['message'] for ReviewComment in CommentsData]
+    RequestPredictlist = PredictRequest(PredictCommentData)
+
+    # 修正要求と予測されたコメントの情報を保存する変数の初期化
     RequestsCommentsData = []
 
-    # レビューコメント毎に修正要求か否かを予測
-    for CommentData in ReviewCommentsFile['messages']:
-        
-        # PR実装者によるコメントでないか確認
-        if CommentData.get('author', {}).get('name', '') == ReviewCommentsFile.get('owner', {}).get('name', ''):
+    for RequestPredictClass, CommentData in zip(RequestPredictlist, CommentsData):
 
-            # PR実装者のコメントは対象にしない
+        # 修正要求のコメントでないか確認
+        if RequestPredictClass != 1:
             continue
+
+        # 実装者のコメントでないか確認
+        if CommentData.get('author', {}).get('name', '') == CommentData.get('owner', {}).get('name', ''):
+            continue
+
+        RequestsCommentsData.append(CommentDataExtract(CommentData))
         
-        # 修正要求を予測する関数の呼び出し
-        RequestPredictClass = PredictRequest(CommentData['message'], Model, Tokenizer)
-
-        # 修正要求のコメントか確認
-        if RequestPredictClass == 1:
-
-            # 修正要求と予測されたコメントの情報を保存
-            RequestsCommentsData.append(CommentDataExtract(CommentData))
-
     # 修正要求と予測されたコメント群のリストを返す
     return RequestsCommentsData
 
@@ -110,10 +116,10 @@ def DefinitionBasedAssociate(RequestsCommentData, AchieveCommentData):
     return AssociateRequest
 
 # 修正要求の予測をする関数
-def PredictRequest(Comment, Model, Tokenizer):
+def PredictRequest(Comments):
 
     # コメントをトークナイズ
-    Encoding = Tokenizer(Comment, truncation=True, padding='max_length', max_length=MAX_LENGTH, return_tensors='pt')
+    Encoding = Tokenizer(Comments, truncation=True, padding='max_length', max_length=MAX_LENGTH, return_tensors='pt')
     
     # モデルを評価モードに設定
     Model.eval()
@@ -121,20 +127,20 @@ def PredictRequest(Comment, Model, Tokenizer):
     # 推論を実行
     with torch.no_grad():
         Outputs = Model(**Encoding)
-        RequestPredictClass = torch.argmax(Outputs.logits, dim=1).item()
+        RequestPredictlist = torch.argmax(Outputs.logits, dim=1).tolist()
 
     # 修正要求か否かを予測した結果を返す
-    return RequestPredictClass
+    return RequestPredictlist
 
 # 修正要求と修正確認を紐づける関数
-def RequestAndAchieveAssociate(ReviewCommentsPath, Model, Tokenizer):
+def RequestAndAchieveAssociate(ReviewCommentsPath):
 
     # FormatFileの読み込み
     with open(ReviewCommentsPath, 'r') as Review_F:
         ReviewCommentsFile = json.load(Review_F)
 
     # 修正要求の予測を行う関数の呼び出し
-    RequestsCommentsData = FindRequest(ReviewCommentsFile, Model, Tokenizer)
+    RequestsCommentsData = FindRequest(ReviewCommentsFile)
 
     # 修正確認のコメントを見つける関数の呼び出し
     AchieveCommentsData = FindAchieve(ReviewCommentsFile)
@@ -142,36 +148,26 @@ def RequestAndAchieveAssociate(ReviewCommentsPath, Model, Tokenizer):
     # 修正要求と修正確認コメントを紐づける関数の呼び出し
     AssociateRequest = DefinitionBasedAssociate(RequestsCommentsData, AchieveCommentsData)
 
-    # 修正要求コメントの情報と紐づいたかどうかを表す情報を表す変数を返す
-    return AssociateRequest
+    # 出力するフォルダとファイル名の読み込み
+    AssociateFolderName = Path(ReviewCommentsPath).parent.name
+    AssociateFileName = Path(ReviewCommentsPath).stem
+
+    # 出力するファイルパスの作成
+    AssociateResultPath = '/Users/haruto-k/research/select_list/RequestAssociateAF/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
+
+    # 紐づけた結果の出力
+    AssociateRequest_df = pd.DataFrame(AssociateRequest)
+    AssociateRequest_df.to_csv(AssociateResultPath, index=False, encoding='utf_8_sig')
 
 # メイン処理
 def main():
 
-    # モデルとトークナイザーのロード
-    Model = BertForSequenceClassification.from_pretrained(MODEL_DIR)
-    Tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
+    # パスを格納
+    FormatPRFilePathList = glob(FormatPRFilePath)
 
-    # モデルをGPUに移動
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    Model.to(device)
-
-    # 対象とするPRを一つずつ処理する
-    for ReviewCommentsPath in tqdm(glob(FormatPRFilePath)):
-
-        # 修正要求を紐づけるための関数の呼び出し
-        AssociateRequest = RequestAndAchieveAssociate(ReviewCommentsPath, Model, Tokenizer)
-
-        # 出力するフォルダとファイル名の読み込み
-        AssociateFolderName = Path(ReviewCommentsPath).parent.name
-        AssociateFileName = Path(ReviewCommentsPath).stem
-
-        # 出力するファイルパスの作成
-        AssociateResultPath = '/Users/haruto-k/research/select_list/RequestAssociate/' + AssociateFolderName + '/' + AssociateFileName + '.csv'
-
-        # 紐づけた結果の出力
-        AssociateRequest_df = pd.DataFrame(AssociateRequest)
-        AssociateRequest_df.to_csv(AssociateResultPath, index=False, encoding='utf_8_sig')
+    # ProcessPoolExecutorを使って並列処理
+    with ProcessPoolExecutor() as executor:
+        list(tqdm(executor.map(RequestAndAchieveAssociate, FormatPRFilePathList), total=len(FormatPRFilePath)))
 
 if __name__ == "__main__":
     main()
