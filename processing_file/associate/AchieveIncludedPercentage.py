@@ -19,6 +19,7 @@ def CalculationAchievePercentage():
     AchieveNumber = 0
     WeakPositive = 0
     StrongPositive = 0
+    OtherAchieve = 0
     NotAppear = 0
 
     # 分類済みチェックリストの分だけループ処理
@@ -49,6 +50,11 @@ def CalculationAchievePercentage():
             StrongPositive += 1
             continue
 
+        # 修正確認コメントの信頼度が高いコメントが含まれている
+        if 'looks good'in CheckListRow['comment'] or 'lgtm'in CheckListRow['comment'] or 'looks ok'in CheckListRow['comment']:
+            OtherAchieve += 1
+            continue
+
         # 修正確認ラベルが付けられていないコメントをカウント
         NotAppear += 1
 
@@ -57,8 +63,10 @@ def CalculationAchievePercentage():
         '修正確認コメント数': AchieveNumber,
         'Code-Review+1(旧ラベルも含む)出現回数': WeakPositive,
         'Code-Review+2(旧ラベルも含む)出現回数': StrongPositive,
+        '信頼度の高かったコメントの出現回数': OtherAchieve,
         'ラベルのついていない出現回数': NotAppear,
-        '修正確認コメントのうちラベルの付いたコメントの出現割合': (WeakPositive + StrongPositive) / AchieveNumber
+        '修正確認コメントのうちラベルの付いたコメントの出現割合': (WeakPositive + StrongPositive) / AchieveNumber,
+        '信頼度の高かったコメント修正確認コメントのうちラベルの付いたコメントの出現割合': (WeakPositive + StrongPositive + OtherAchieve) / AchieveNumber
     }]
 
     # 出現回数などを保存したリストをデータフレーム型に変換
