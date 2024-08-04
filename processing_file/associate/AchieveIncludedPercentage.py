@@ -51,7 +51,7 @@ def CalculationAchievePercentage():
             continue
 
         # 修正確認コメントの信頼度が高いコメントが含まれている
-        if 'looks good'in CheckListRow['comment'] or 'lgtm'in CheckListRow['comment'] or 'looks ok'in CheckListRow['comment']:
+        if 'looks good'in CheckListRow['comment'].lower() or 'lgtm'in CheckListRow['comment'].lower() or 'looks ok'in CheckListRow['comment'].lower():
             OtherAchieve += 1
             continue
 
