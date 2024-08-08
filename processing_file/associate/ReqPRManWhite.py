@@ -36,7 +36,8 @@ def MannWhite():
         MWResult_list.append({
             'Project': Path(PRPath).stem,
             'statistic': stat,
-            'p-value': pvalue
+            'p-value': pvalue,
+            'effect_size': stat / (len(PRData_df['PRSum']) * len(PRData_df['PRSum']))
         })
 
     # 有意差の結果を保存する変数を返す
