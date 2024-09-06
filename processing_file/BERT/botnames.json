@@ -1,0 +1,308 @@
+[
+    {
+        "bot name": "A10 Networks CI"
+    },
+    {
+        "bot name": "Arista CI"
+    },
+    {
+        "bot name": "Big Switch CI"
+    },
+    {
+        "bot name": "Blockbridge OpenStack CI"
+    },
+    {
+        "bot name": "Brocade Vyatta CI"
+    },
+    {
+        "bot name": "Cisco APIC CI"
+    },
+    {
+        "bot name": "Cisco CI"
+    },
+    {
+        "bot name": "Cisco Cinder CI"
+    },
+    {
+        "bot name": "Cisco CSR1kv CI"
+    },
+    {
+        "bot name": "Cisco FWaaS CI"
+    },
+    {
+        "bot name": "Cisco N1kv CI"
+    },
+    {
+        "bot name": "Cisco PNR CI"
+    },
+    {
+        "bot name": "Cisco Tail-f CI"
+    },
+    {
+        "bot name": "Cisco UCSM CI"
+    },
+    {
+        "bot name": "Cisco vpnaas CI"
+    },
+    {
+        "bot name": "Citrix XenServer CI"
+    },
+    {
+        "bot name": "CISCO ZM CI"
+    },
+    {
+        "bot name": "Cloudbase Nova Hyper-V CI"
+    },
+    {
+        "bot name": "DataCore CI"
+    },
+    {
+        "bot name": "Datera CI"
+    },
+    {
+        "bot name": "DB Datasets CI"
+    },
+    {
+        "bot name": "DDN Lustre CI"
+    },
+    {
+        "bot name": "Dell EMC CorpHD CI"
+    },
+    {
+        "bot name": "Dell StorageCenter CI"
+    },
+    {
+        "bot name": "DellEMC PowerStore CI"
+    },
+    {
+        "bot name": "DellEMC PowerVault ME CI"
+    },
+    {
+        "bot name": "DellEMC SC CI"
+    },
+    {
+        "bot name": "DellEMC Unity CI"
+    },
+    {
+        "bot name": "Elastic Recheck"
+    },
+    {
+        "bot name": "Embrane CI"
+    },
+    {
+        "bot name": "Fujitsu ETERNUS FC CI"
+    },
+    {
+        "bot name": "HDS HNAS CI"
+    },
+    {
+        "bot name": "Hedvig CI"
+    },
+    {
+        "bot name": "HGST Solutions CI"
+    },
+    {
+        "bot name": "Hitachi HBSD CI"
+    },
+    {
+        "bot name": "Hitachi HBSD2 CI"
+    },
+    {
+        "bot name": "Hitachi VSP CI"
+    },
+    {
+        "bot name": "HP Networking CI"
+    },
+    {
+        "bot name": "HP Storage CI"
+    },
+    {
+        "bot name": "HPMSA CI"
+    },
+    {
+        "bot name": "HPE XP STORAGE BLR CI"
+    },
+    {
+        "bot name": "huawei-cinder-ci"
+    },
+    {
+        "bot name": "IBM DB2 CI"
+    },
+    {
+        "bot name": "IBM FlashSystem CI"
+    },
+    {
+        "bot name": "IBM GPFS CINDER CI"
+    },
+    {
+        "bot name": "IBM NAS CI"
+    },
+    {
+        "bot name": "IBM PowerKVM CI"
+    },
+    {
+        "bot name": "IBM PowerVM CI"
+    },
+    {
+        "bot name": "IBM SDN-VE CI"
+    },
+    {
+        "bot name": "IBM Testing CI"
+    },
+    {
+        "bot name": "IBM zVM CI"
+    },
+    {
+        "bot name": "Infortrend CI"
+    },
+    {
+        "bot name": "INSPUR CI"
+    },
+    {
+        "bot name": "Intel_Zuul"
+    },
+    {
+        "bot name": "Intel Experimental CI"
+    },
+    {
+        "bot name": "Intel NFV CI"
+    },
+    {
+        "bot name": "Intel PCI CI"
+    },
+    {
+        "bot name": "Intel RSD CI"
+    },
+    {
+        "bot name": "Intel SR-IOV CI"
+    },
+    {
+        "bot name": "Kaminario K2FC CI"
+    },
+    {
+        "bot name": "LaunchpadSync"
+    },
+    {
+        "bot name": "Lenovo Storage CI"
+    },
+    {
+        "bot name": "LINBIT LINSTOR CI"
+    },
+    {
+        "bot name": "MacroSAN Volume CI"
+    },
+    {
+        "bot name": "Metaplugin CI"
+    },
+    {
+        "bot name": "Microsoft Hyper-V CI"
+    },
+    {
+        "bot name": "Microsoft Hyper-V Compute CI"
+    },
+    {
+        "bot name": "Microsoft Hyper-V Networking CI"
+    },
+    {
+        "bot name": "NetApp FC CI"
+    },
+    {
+        "bot name": "NetApp SolidFire CI"
+    },
+    {
+        "bot name": "Nimble Storage CI"
+    },
+    {
+        "bot name": "Nuage CI"
+    },
+    {
+        "bot name": "One Convergence CI"
+    },
+    {
+        "bot name": "Open-E CI"
+    },
+    {
+        "bot name": "Open-E JovianDSS CI"
+    },
+    {
+        "bot name": "OpenContrail CI"
+    },
+    {
+        "bot name": "OpenDaylight CI"
+    },
+    {
+        "bot name": "openstack lightbits"
+    },
+    {
+        "bot name": "OpenvStorage CI - unmaintained"
+    },
+    {
+        "bot name": "Oracle ZFSSA CI"
+    },
+    {
+        "bot name": "OSNEXUS Quantastor CI"
+    },
+    {
+        "bot name": "Pluribus Networks CI"
+    },
+    {
+        "bot name": "Pure Storage Third-Party CI"
+    },
+    {
+        "bot name": "qnap-ci"
+    },
+    {
+        "bot name": "Reduxio HX550 CI"
+    },
+    {
+        "bot name": "Ryu CI"
+    },
+    {
+        "bot name": "SandStone Storage CI"
+    },
+    {
+        "bot name": "Seagate CI"
+    },
+    {
+        "bot name": "SmokeStack CI"
+    },
+    {
+        "bot name": "SwiftStack Cluster CI"
+    },
+    {
+        "bot name": "TOYOU ACS5000 CI"
+    },
+    {
+        "bot name": "vArmour CI"
+    },
+    {
+        "bot name": "Vedams DotHillDriver CI"
+    },
+    {
+        "bot name": "Vedams-HPMSA FCISCSIDriver CI"
+    },
+    {
+        "bot name": "Vedams-LenovoStorage FCISCSI CI"
+    },
+    {
+        "bot name": "venkata krishnat"
+    },
+    {
+        "bot name": "vikas"
+    },
+    {
+        "bot name": "Welcome"
+    },
+    {
+        "bot name": "X-IO OpenStack CI"
+    },
+    {
+        "bot name": "XenProject CI"
+    },
+    {
+        "bot name": "z Systems KVM"
+    },
+    {
+        "bot name": "ZTE cinder2 CI"
+    }
+]
