@@ -1,3 +1,4 @@
+import json
 import torch
 import pandas as pd
 from sklearn.model_selection import KFold, train_test_split
@@ -9,6 +10,11 @@ from tqdm import tqdm
 # CSVファイルの読み込み
 commentsLabel_csv_path = '/Users/haruto-k/research/select_list/checkList/alradyStart/checkList.csv'
 df = pd.read_csv(commentsLabel_csv_path, header=0)
+
+# botの名前が記述されたファイルの読み込みと名前をリストに保存
+with open('/Users/haruto-k/research/processing_file/BERT/botnames.json') as f_botjson:
+    botnames_json = json.load(f_botjson)
+botnames_list = [botname['bot name'] for botname in botnames_json]
 
 # データの前処理
 df = df.rename(columns={'comment': 'text', '修正要求': 'label'})
@@ -49,9 +55,9 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     train_val_df = df.iloc[train_idx]
     test_df = df.iloc[test_idx]
 
-    # ownerとauthorが一致する行は訓練，検証，予測に用いない
-    train_val_df = train_val_df[train_val_df['owner'] != train_val_df['author']]
-    test_df = test_df[test_df['owner'] != test_df['author']]
+    # botのコメントは訓練、検証、予測に用いない
+    train_val_df = train_val_df[~train_val_df['author'].isin(botnames_list)]
+    test_df = test_df[~test_df['author'].isin(botnames_list)]
 
     # 訓練データと検証データに分割 (8:1 の比率で分割)
     train_df, val_df = train_test_split(train_val_df, test_size=3/10, random_state=712)
