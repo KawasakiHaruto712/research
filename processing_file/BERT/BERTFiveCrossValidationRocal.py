@@ -43,6 +43,9 @@ class CommentDataset(Dataset):
 # トークナイザのロード
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
+# botのコメントを除外
+df = df[~df['author'].isin(botnames_list)]
+
 # 10分割交差検証の設定
 kf = KFold(n_splits=5, shuffle=True, random_state=712)
 results = []
@@ -128,6 +131,9 @@ sorted_preds = [''] * len(df)
 for dfRow in  range(len(df)):
     if dfRow in sorted_index_preds:
         sorted_preds[dfRow] = sorted_index_preds[dfRow]
+    else:
+        sorted_preds[dfRow] = '予測なし'  # 予測がない場合にデフォルト値を設定
+
 
 # 元のデータフレームに予測結果を組み込む
 df.insert(loc = 0, column='precision', value=results_df['precision'].mean())
