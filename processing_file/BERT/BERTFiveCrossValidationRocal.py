@@ -136,8 +136,8 @@ df.insert(loc = 2, column='f1', value=results_df['f1'].mean())
 df.insert(loc = 12, column='予測', value=sorted_preds)
 df = df.rename(columns={'text': 'comment', 'label': '修正要求'})
 
-# ownerとauthorが一致する行は空白にする
-df.loc[df['owner'] == df['author'], '予測'] = pd.NA
-df.loc[df['owner'] == df['author'], '修正要求'] = pd.NA
+# botnames_listに存在するbot nameとauthor名が一致する行は空白にする
+df.loc[df['author'].isin(botnames_list), '予測'] = pd.NA
+df.loc[df['author'].isin(botnames_list), '修正要求'] = pd.NA
 
 df.to_csv('/Users/haruto-k/research/select_list/checkList/AlradyStartBeforeCode/CheckListResult.csv', index=False, encoding='utf_8_sig')
