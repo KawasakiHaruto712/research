@@ -3,9 +3,7 @@ processing_file/associate/OutPutLogs
 processing_file/associate/nohup.out
 
 processing_file/BERT/*
-!processing_file/BERT/BERTFiveCrossValidationRocal.py
 !processing_file/BERT/BERTModelCreateRocal.py
-!processing_file/BERT/botnames.json
 !processing_file/BERT/cross_validation.py
 
 project/*
