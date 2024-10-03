@@ -66,7 +66,8 @@ def count_word(name_cate, com_cate):
         lemma = nltk.WordNetLemmatizer()
 
         # コメントの前処理
-        format_com = [re.sub(r"^Patch\sSet\s[0-9]+:*", "", com) for com in comments] # パッチセット番号の情報を削除
+        format_com = [com for com in comments if not re.search(r"^Uploaded\spatch\sset\s[0-9]+\.", com)] # アップロードメッセージは処理しない
+        format_com = [re.sub(r"^Patch\sSet\s[0-9]+:*", "", com) for com in format_com] # パッチセット番号の情報を削除
         format_com = [re.sub(r"[^a-zA-Z0-9\-+]", " ", com) for com in format_com] # 記号を削除する
         format_com = [com.lower() for com in format_com] # 全て小文字にする
         format_com = [nltk.word_tokenize(com) for com in format_com] # トークナイズする
