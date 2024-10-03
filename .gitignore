@@ -6,6 +6,7 @@ processing_file/BERT/*
 !processing_file/BERT/BERTFiveCrossValidationRocal.py
 !processing_file/BERT/BERTModelCreateRocal.py
 !processing_file/BERT/botnames.json
+!processing_file/BERT/cross_validation.py
 
 project/*
 !project/AchieveComments.json
