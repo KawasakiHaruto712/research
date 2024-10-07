@@ -5,6 +5,8 @@ processing_file/associate/nohup.out
 processing_file/BERT/*
 !processing_file/BERT/BERTModelCreateRocal.py
 !processing_file/BERT/cross_validation.py
+!processing_file/BERT/label_cross_validation
+processing_file/BERT/label_cross_validation/cross_validation
 
 project/*
 !project/AchieveComments.json
