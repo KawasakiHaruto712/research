@@ -3,6 +3,7 @@ processing_file/associate/OutPutLogs
 processing_file/associate/nohup.out
 
 processing_file/BERT/*
+!processing_file/BERT/accuracy_request_metric.py
 !processing_file/BERT/BERTModelCreateRocal.py
 !processing_file/BERT/cross_validation.py
 !processing_file/BERT/label_cross_validation
