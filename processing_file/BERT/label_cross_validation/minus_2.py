@@ -131,10 +131,11 @@ for dfRow in range(len(df)):
         sorted_preds[dfRow] = '予測なし'  # 予測がない場合にデフォルト値を設定
 
 # 元のデータフレームに予測結果を組み込む
-df.insert(loc = 0, column='precision', value=results_df['precision'].mean())
-df.insert(loc = 1, column='recall', value=results_df['recall'].mean())
-df.insert(loc = 2, column='f1', value=results_df['f1'].mean())
+df.insert(loc = 0, column='precision', value=results_df['precision'].median())
+df.insert(loc = 1, column='recall', value=results_df['recall'].median())
+df.insert(loc = 2, column='f1', value=results_df['f1'].median())
 df.insert(loc = 12, column='予測', value=sorted_preds)
 df = df.rename(columns={'text': 'comment', 'label': '修正要求'})
 
 df.to_csv('/Users/haruto-k/research/select_list/checkList/alradyStart/label/minus_2.csv', index=False, encoding='utf_8_sig')
+results_df.to_csv('/Users/haruto-k/research/select_list/checkList/alradyStart/value/minus_2.csv', index=False, encoding="utf_8_sig")
