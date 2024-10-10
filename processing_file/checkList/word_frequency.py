@@ -27,11 +27,11 @@ def read_checklist():
     check_PR_num = float(textline[0])
     checklist = checklist[checklist["PRNumber"] <= check_PR_num]
 
-    # botのコメントの削除
-    with open(bot_names_path, 'r') as bot_names_json:
-        bot_names = json.load(bot_names_json)
-    bot_names_list = [bot["name"] for bot in bot_names]
-    checklist = checklist[~checklist["author"].isin(bot_names_list)]
+    # # botのコメントの削除
+    # with open(bot_names_path, 'r') as bot_names_json:
+    #     bot_names = json.load(bot_names_json)
+    # bot_names_list = [bot["name"] for bot in bot_names]
+    # checklist = checklist[~checklist["author"].isin(bot_names_list)]
 
     return checklist
 
@@ -66,8 +66,8 @@ def count_word(name_cate, com_cate):
         lemma = nltk.WordNetLemmatizer()
 
         # コメントの前処理
-        format_com = [com for com in comments if not re.search(r"^Uploaded\spatch\sset\s[0-9]+\.", com)] # アップロードメッセージは処理しない
-        format_com = [re.sub(r"^Patch\sSet\s[0-9]+:*", "", com) for com in format_com] # パッチセット番号の情報を削除
+        # format_com = [com for com in comments if not re.search(r"^Uploaded\spatch\sset\s[0-9]+\.", com)] # アップロードメッセージは処理しない
+        format_com = [re.sub(r"^Patch\sSet\s[0-9]+:*", "", com) for com in comments] # パッチセット番号の情報を削除
         format_com = [re.sub(r"[^a-zA-Z0-9\-+]", " ", com) for com in format_com] # 記号を削除する
         format_com = [com.lower() for com in format_com] # 全て小文字にする
         format_com = [nltk.word_tokenize(com) for com in format_com] # トークナイズする
