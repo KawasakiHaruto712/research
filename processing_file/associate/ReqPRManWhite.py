@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from glob import glob
 from pathlib import Path
@@ -32,12 +33,18 @@ def MannWhite():
         # マンホイットニーのU検定を実行
         stat, pvalue = mannwhitneyu(PRData_df['PRSum'], ReqData_df['RequestSum'])
 
+        # 効果量rを算出
+        E = len(PRData_df['PRSum']) * len(ReqData_df['RequestSum']) / 2
+        V = np.sqrt(len(PRData_df['PRSum']) * len(ReqData_df['RequestSum']) * (len(PRData_df['PRSum']) + len(ReqData_df['RequestSum']) + 1) / 12)
+        Z = (stat - E) / V
+        r = Z / np.sqrt(len(PRData_df['PRSum']) + len(ReqData_df['RequestSum']))
+
         # 有意差の結果を変数に保存
         MWResult_list.append({
             'Project': Path(PRPath).stem,
             'statistic': stat,
             'p-value': pvalue,
-            'effect_size': stat / (len(PRData_df['PRSum']) * len(PRData_df['PRSum']))
+            'effect_size': r
         })
 
     # 有意差の結果を保存する変数を返す
