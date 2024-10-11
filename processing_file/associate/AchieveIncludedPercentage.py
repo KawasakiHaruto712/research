@@ -41,17 +41,23 @@ def CalculationAchievePercentage():
             continue
 
         # Code-Review+1がコメントに含まれている
-        if 'Code-Review+1' in CheckListRow['comment'] or 'Looks good to me, but someone else must approve' in CheckListRow['comment']:
+        if ('Code-Review+1' in CheckListRow['comment'] or 
+            'Looks good to me, but someone else must approve' in CheckListRow['comment'] or 
+            'Works for me' in CheckListRow['comment'] or 
+            'Sanity review passed' in CheckListRow['comment']):
             WeakPositive += 1
             continue
 
         # Code-Review+2がコメントに含まれている
-        if 'Code-Review+2' in CheckListRow['comment'] or 'Looks good to me, approved' in CheckListRow['comment']:
+        if ('Code-Review+2' in CheckListRow['comment'] or 
+            'Looks good to me, approved' in CheckListRow['comment']):
             StrongPositive += 1
             continue
 
         # 修正確認コメントの信頼度が高いコメントが含まれている
-        if 'looks good'in CheckListRow['comment'].lower() or 'lgtm'in CheckListRow['comment'].lower() or 'looks ok'in CheckListRow['comment'].lower():
+        if ('looks good'in CheckListRow['comment'].lower() or 
+            'lgtm'in CheckListRow['comment'].lower() or 
+            'looks ok'in CheckListRow['comment'].lower()):
             OtherAchieve += 1
             continue
 
@@ -82,7 +88,7 @@ def main():
     AchievePercentageResult_df = CalculationAchievePercentage()
 
     # 修正確認として分類したコメントの内，ラベルの出現割合結果の出力
-    AchievePercentageResult_WritePath = '/Users/haruto-k/research/select_list/AchieveIncludedPercentage.csv'
+    AchievePercentageResult_WritePath = '/Users/haruto-k/research/select_list/achieve_include_ratio.csv'
     AchievePercentageResult_df.to_csv(AchievePercentageResult_WritePath, index=False, encoding='utf_8_sig')
 
 if __name__ == "__main__":
