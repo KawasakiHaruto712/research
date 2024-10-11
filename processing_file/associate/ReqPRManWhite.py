@@ -37,7 +37,7 @@ def MannWhite():
         E = len(PRData_df['PRSum']) * len(ReqData_df['RequestSum']) / 2
         V = np.sqrt(len(PRData_df['PRSum']) * len(ReqData_df['RequestSum']) * (len(PRData_df['PRSum']) + len(ReqData_df['RequestSum']) + 1) / 12)
         Z = (stat - E) / V
-        r = Z / np.sqrt(len(PRData_df['PRSum']) + len(ReqData_df['RequestSum']))
+        r = abs(Z / np.sqrt(len(PRData_df['PRSum']) + len(ReqData_df['RequestSum'])))
 
         # 有意差の結果を変数に保存
         MWResult_list.append({
