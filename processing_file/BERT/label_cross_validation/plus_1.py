@@ -51,7 +51,7 @@ for fold, (train_idx, test_idx) in enumerate(kf.split(df)):
     test_df = df.iloc[test_idx]
 
     # "Code-Review+1"を含むテストデータのみを選択
-    test_df = test_df[test_df["text"].str.contains("Code-Review\+1|Looks\sgood\sto\sme,\sbut\ssomeone\selse\smust\sapprove", regex=True, na=False)]
+    test_df = test_df[test_df["text"].str.contains("Code-Review\+1|Looks\sgood\sto\sme,\sbut\ssomeone\selse\smust\sapprove|Works\sfor\sme|Sanity\sreview\spassed", regex=True, na=False)]
 
     # テストデータが空の場合、このfoldをスキップ
     if test_df.empty:
