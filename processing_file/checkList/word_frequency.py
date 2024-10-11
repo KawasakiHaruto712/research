@@ -11,7 +11,7 @@ nltk.download('punkt_tab')
 
 # 定数の設定
 bot_names_path = "../../project/botNames.json"
-checklist_path = "../../select_list/checkList/AlradyStartBeforeCode/CheckListResult.csv"
+checklist_path = "../../select_list/checkList/alradyStart/checklist_result.csv"
 check_PR_num_path = "../../select_list/labeled_PRNumber.txt"
 uni_gram_path = "../../select_list/checkList/N_gram/unigram.csv"
 bi_gram_path = "../../select_list/checkList/N_gram/bigram.csv"
@@ -104,9 +104,9 @@ def n_gram_com(format_com):
         for com in format_com:
             n_gram.extend(tuple(com[i:i+n_gram_num]) for i in range(len(com)-n_gram_num+1))
         
-        # 頻出したN-gramの結果の内上位20件を抽出
+        # 頻出したN-gramの結果の内上位40件を抽出
         com_count = Counter(n_gram)
-        high_num_n_gram.append(com_count.most_common(20))
+        high_num_n_gram.append(com_count.most_common(40))
 
     return high_num_n_gram
 
