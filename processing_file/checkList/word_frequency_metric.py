@@ -27,11 +27,13 @@ def read_checklist():
     check_PR_num = float(textline[0])
     checklist = checklist[checklist["PRNumber"] <= check_PR_num]
 
-    # botのコメントの削除
-    # with open(bot_names_path, 'r') as bot_names_json:
-    #     bot_names = json.load(bot_names_json)
-    # bot_names_list = [bot["name"] for bot in bot_names]
-    # checklist = checklist[~checklist["author"].isin(bot_names_list)]
+    bot_delete = input("botのコメントを削除する:y, 削除しない:n\n削除しますか？:")
+    if bot_delete == "y":
+        # botのコメントの削除
+        with open(bot_names_path, 'r') as bot_names_json:
+            bot_names = json.load(bot_names_json)
+        bot_names_list = [bot["name"] for bot in bot_names]
+        checklist = checklist[~checklist["author"].isin(bot_names_list)]
 
     return checklist
 
