@@ -13,6 +13,7 @@ project/*
 !project/AchieveComments.json
 !project/adjust_comments.json
 !project/BotNames.json
+!project/label_comments.yml
 
 select_list/*
 !select_list/AchieveCommentsFile.json\

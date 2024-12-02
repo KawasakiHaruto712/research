@@ -1,6 +1,6 @@
-import json
 import torch
 import pandas as pd
+import yaml
 from sklearn.model_selection import KFold, train_test_split
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
 from torch.utils.data import Dataset, DataLoader
@@ -14,6 +14,15 @@ df = pd.read_csv(commentsLabel_csv_path, header=0)
 # データの前処理
 df = df.rename(columns={'comment': 'text', '修正要求': 'label'})
 df['label'] = df['label'].replace('', '0').fillna(0).astype(int)
+label_delete = input("レビューラベル(定型文)は削除する:y, 削除しない:n\n削除しますか？:")
+if label_delete ==  "y":
+    # ラベルのコメントが記述されたymlファイルを読み込み
+    with open("/Users/haruto-k/research/project/label_comments.yml") as label_yml:
+        label_comments = yaml.safe_load(label_yml)
+    # ラベルを削除(ラベルだけのコメントは削除)
+    for label_com in label_comments:
+        df["text"] = df["text"].str.replace(str(label_com), "", regex=True)
+        df = df[~df["text"].str.isspace()]
 
 # ラベル付けされているPR番号を読み込み
 with open('/Users/haruto-k/research/select_list/labeled_PRNumber.txt') as f_txt:
