@@ -1,5 +1,6 @@
 import torch
 import pandas as pd
+import re
 import yaml
 from sklearn.model_selection import KFold, train_test_split
 from transformers import BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments
@@ -22,7 +23,7 @@ if label_delete ==  "y":
     # ラベルを削除(ラベルだけのコメントは削除)
     for label_com in label_comments:
         df["text"] = df["text"].str.replace(str(label_com), "", regex=True)
-        df = df[~df["text"].str.isspace()]
+    df = df[~df["text"].str.match(r'^\s*$')]
 
 # ラベル付けされているPR番号を読み込み
 with open('/Users/haruto-k/research/select_list/labeled_PRNumber.txt') as f_txt:
