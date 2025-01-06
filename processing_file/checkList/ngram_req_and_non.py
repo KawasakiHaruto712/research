@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import nltk
 import re
+import yaml
 from nltk.corpus import stopwords
 from tqdm import tqdm
 from tqdm.contrib import tenumerate
@@ -25,6 +26,16 @@ def read_checklist():
             bot_names = json.load(bot_names_json)
         bot_names_list = [bot["name"] for bot in bot_names]
         checklist = checklist[~checklist["author"].isin(bot_names_list)]
+
+    # ラベルのコメントを削除するか選択
+    label_delete = input("レビューラベル(定型文)は削除する:y, 削除しない:n\削除しますか？:")
+    if label_delete == "y":
+        with open("../../project/label_comments.yml") as label_yml:
+            label_comments = yaml.safe_load(label_yml)
+    # ラベルを削除(ラベルだけのコメントは削除)
+    for label_com in label_comments:
+        checklist["comment"] = checklist["comment"].str.replace(str(label_com), "", regex=True)
+    checklist = checklist[~checklist["comment"].str.match(r'^\s*$')]
 
     return checklist
 
@@ -95,14 +106,17 @@ def ngram_frequecy_count(comments_ngram, ngram_variations):
 
 def format_document(document):
     
-     # コメントの前処理(不要語の削除，単語毎に区切る)
-    lemma = nltk.WordNetLemmatizer()                                                                    # レマタイザーのインスタンス化
-    format_document = re.sub(r"[^a-zA-Z0-9\-+]", " ", document)                                         # 記号を削除する
-    format_document = format_document.lower()                                                           # 全て小文字にする
-    format_document = nltk.word_tokenize(format_document)                                               # トークナイズする
-    format_document = [word for word in format_document if not word in set(stopwords.words("english"))] # ストップワードを削除
-    format_document = [lemma.lemmatize(word) for word in format_document]                               # レマタイズの実行
-    format_document = " ".join(format_document)                                                         # スペースで区切って配列を文字列に変換
+    # コメントの前処理(不要語の削除，単語毎に区切る)
+    lemma = nltk.WordNetLemmatizer()                                                                        # レマタイザーのインスタンス化
+    format_document = re.sub(r'https?://[^\s<>"]+|www\.[^\s<>"]+|[^\s<>"]+\.[a-zA-Z]{2,}', " ", document)   # URLを削除
+    format_document = re.sub(r"[^a-zA-Z]+", " ", format_document)                                           # 記号を削除
+    format_document = format_document.lower()                                                               # 全て小文字
+    format_document = re.sub(r"nova|neutron|cinder|horizon|keystone|swift|glance", " ", format_document)    # プロジェクト名を削除
+    format_document = re.sub(r"openstack|ci", " ", format_document)                                         # その他不要コメントを削除
+    format_document = nltk.word_tokenize(format_document)                                                   # トークナイズ
+    format_document = [word for word in format_document if not word in set(stopwords.words("english"))]     # ストップワードを削除
+    format_document = [lemma.lemmatize(word) for word in format_document]                                   # レマタイズの実行
+    format_document = " ".join(format_document)                                                             # スペースで区切って配列を文字列に変換
 
     return format_document
 
