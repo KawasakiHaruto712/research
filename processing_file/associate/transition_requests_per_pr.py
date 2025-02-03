@@ -74,20 +74,26 @@ def main():
     request_data_melted = request_data_melted.dropna(subset=['value'])
     request_data_melted.to_csv("../../select_list/TaskTransition/request_per_pr.csv", index=False, encoding="utf_8_sig")
 
-    # グラフの描画と保存
-    line_plot = sns.relplot(x="days", y="value", data=request_data_melted, kind="line", errorbar="sd")
-    line_plot.figure.set_size_inches(7.5, 4.5)
+    # 平均のグラフと中央値のグラフの記述
+    graph_type = ["mean", "median"]
 
-    # x軸を1年毎に区切る
-    ax = line_plot.axes[0][0]  # グラフのaxesオブジェクトを取得
-    ax.xaxis.set_major_locator(mdates.YearLocator())  # 1年毎にメモリを設定
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))  # 年のみ表示
-    # y軸を0.5刻みに設定
-    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))  # 1刻みにメモリを設定
+    for graph in graph_type:
+    
+        # グラフの描画と保存
+        sns.set_style("whitegrid")
+        line_plot = sns.relplot(x="days", y="value", data=request_data_melted, kind="line", errorbar="sd", estimator=graph)
+        line_plot.figure.set_size_inches(7.5, 4.5)
 
-    line_plot.set_axis_labels("Date", "Number of Review Requests per PR", labelpad=10)
-    figure = line_plot.figure
-    figure.savefig("../../select_list/TaskTransition/request_per_pr.pdf")
+        # x軸を1年毎に区切る
+        ax = line_plot.axes[0][0]  # グラフのaxesオブジェクトを取得
+        ax.xaxis.set_major_locator(mdates.YearLocator())  # 1年毎にメモリを設定
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))  # 年のみ表示
+        # y軸を0.5刻みに設定
+        ax.yaxis.set_major_locator(ticker.MultipleLocator(1))  # 1刻みにメモリを設定
+
+        line_plot.set_axis_labels("Date", "Number of Review Requests per PR", labelpad=10)
+        figure = line_plot.figure
+        figure.savefig(f"../../select_list/TaskTransition/request_per_pr/{graph}.pdf")
 
 if __name__ == "__main__":
     main()
