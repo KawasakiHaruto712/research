@@ -30,6 +30,8 @@ def main():
     
         # 修正要求数とクローズ時間を保存
         all_data.append((request_sum, open_minutes))
+    all_data_df = pd.DataFrame(all_data)
+    all_data_df.to_csv("../../select_list/closetime_and_requestnum.csv", index=False, encoding="utf_8_sig")
 
     # 同一修正要求数を持つデータをグループ化
     grouped_data = {}
